@@ -1,0 +1,35 @@
+ul {
+    list-style:none;
+}
+div {
+    padding: 0 30px;
+}
+
+.Menu{
+    margin:0 auto;
+    letter-spacing: 0.5em;
+    font: 14px/2 "ＭＳ 明朝", serif;
+}
+
+.HeaderStart{
+    background: linear-gradient(to right,#e60000,#f39800,#fff100,#009944,#0068b7,#1d2088,#920783);
+    font: 14px/2 "MS 明朝", serif;
+}
+
+.header_flex {
+    display: flex;
+    height:60px;
+    align-items: center;
+}
+
+.header_flex nav {
+    margin-left: auto;
+}
+
+.header_flex ul {
+    display: flex;
+}
+
+.header_flex ul li {
+    margin-left: 20px;
+}
