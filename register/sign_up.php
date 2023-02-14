@@ -3,21 +3,20 @@
 <?php include("../_inc/header.php"); ?>  <!-- ヘッダー共通部分 -->
 <link rel="stylesheet" href="../css/sign_up.css">
 
-<h2>新規登録</h2>
+
 
   <form action="../top/index.php" method="POST">
+    <h2>新規登録</h2>
     <div>
-      <label class="label" for="name">名前</label>
-      <input id="name" type="text" name="name">
+      <input id="name" type="text" name="name" placeholder="Username">
     </div>
 
     <div>
-      <label class="label" for="e-mail">パスワード</label>
-      <input id="e-mail" type="email" name="email">
+      <input id="e-mail" type="email" name="email" placeholder = "UserEmail">
     </div>
 
     <div>
-      <input type="submit">
+      <input type="submit" name = "button" value = "REGISTER">
     </div>
 
   </form>
