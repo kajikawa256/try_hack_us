@@ -25,11 +25,11 @@ CREATE TABLE users (
 );
 
 -- ダミーテーブル作成 --
-CREATE TABLE dummyTable {
+CREATE TABLE dummyTable (
   username VARCHAR(10) NOT NULL,
   password VARCHAR(50) NOT NULL,
   level int DEFAULT 1,
-};
+);
 
 -- ダミー情報の作成 --
 INSERT INTO dummyTable
