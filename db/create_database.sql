@@ -11,10 +11,6 @@ CREATE USER Administrator IDENTIFIED WITH MYSQL_NATIVE_PASSWORD BY 'Administrato
 DROP USER IF EXISTS dummyUser;
 CREATE USER dummyUser IDENTIFIED WITH MYSQL_NATIVE_PASSWORD BY 'iamking';
 
--- ユーザにデータベース権限付与 --
-GRANT ALL ON try_hack_us.* TO Administrator;
-GRANT SELECT ON try_hack_us.dummyTable TO dummyUser;
-
 -- usersテーブル作成 --
 CREATE TABLE users (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -28,11 +24,15 @@ CREATE TABLE users (
 CREATE TABLE dummyTable (
   username VARCHAR(10) NOT NULL,
   password VARCHAR(50) NOT NULL,
-  level int DEFAULT 1,
+  level int DEFAULT 1
 );
+
+-- ユーザにデータベース権限付与 --
+GRANT ALL ON try_hack_us.* TO Administrator;
+GRANT SELECT ON try_hack_us.dummyTable TO dummyUser;
 
 -- ダミー情報の作成 --
 INSERT INTO dummyTable
-VALUES ('a','level1'),('b','level2'),('c','level3');
+VALUES ('a','level1',1),('b','level2',2),('c','level3',3);
 
 commit;
