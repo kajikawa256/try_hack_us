@@ -2,6 +2,9 @@
 <?php $description = "トップページの説明";?> <!-- headのdescriptionに反映させる -->
 <?php include("../_inc/header.php"); ?>  <!-- ヘッダー共通部分 -->
 <link rel="stylesheet" href="../css/sign_up.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Babylonica&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
 
 
 
