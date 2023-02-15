@@ -1,3 +1,24 @@
+<?php
+
+# ログインしていない人はログインページへ飛ばす
+// session_start();
+// if(!isset($_SESSION["USER_ID"])){
+//         header("Location: ../register/sign_in.php");
+// }
+
+$id = filter_input(INPUT_POST,"id");
+$pass = filter_input(INPUT_POST,"password");
+
+// idとpassが空ならスルー
+if(isset($id) && isset($pass)){
+        
+}
+
+?>
+
+
+
+
 <?php $title = "問題レベル2";?> <!-- headのtitleに反映させる -->
 <?php $description = "Please hack me XD";?> <!-- headのdescriptionに反映させる -->
 <?php include("../_inc/header.php"); ?>  <!-- ヘッダー共通部分 -->
@@ -9,11 +30,11 @@
 
                 <form action="../answer/ans_page_1.php" method="POST">
                         <div class="contents_elemnt">
-                                <input id="input_element" type="text" name="name" placeholder="">
+                                <input id="input_element" type="text" name="name" placeholder=" ユーザID">
                         </div>
 
                         <div class="contents_elemnt">
-                                <input id="input_element" type="text" name="password" placeholder = "">
+                                <input id="input_element" type="text" name="password" placeholder=" パスワード">
                         </div>
 
                         <div class="contents_elemnt" id="rogin_button">
