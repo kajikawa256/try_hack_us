@@ -12,8 +12,8 @@ DROP USER IF EXISTS dummyUser;
 CREATE USER dummyUser IDENTIFIED WITH MYSQL_NATIVE_PASSWORD BY 'iamking';
 
 -- ユーザにデータベース権限付与 --
-GRANT ALL ON try_hack_us.* TO try_hack_us;
-GRANT SELECT ON studb.dummyTable TO try_hack_us;
+GRANT ALL ON try_hack_us.* TO Administrator;
+GRANT SELECT ON try_hack_us.dummyTable TO dummyUser;
 
 -- usersテーブル作成 --
 CREATE TABLE users (
