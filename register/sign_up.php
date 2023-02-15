@@ -5,20 +5,15 @@
 
 
 
-  <form action="../top/index.php" method="POST">
-    <h2>新規登録</h2>
-    <div>
-      <input id="name" type="text" name="name" placeholder="Username">
-    </div>
+<div class="login-page">
+  <div class="form">
+    <form class="login-form">
+      <input type="text" placeholder="username"/>
+      <input type="password" placeholder="password"/>
+      <button>RESISTER</button>
+    </form>
+  </div>
+</div>
 
-    <div>
-      <input id="e-mail" type="email" name="email" placeholder = "UserEmail">
-    </div>
-
-    <div>
-      <input type="submit" name = "button" value = "REGISTER">
-    </div>
-
-  </form>
 
 <?php include("../_inc/footer.php"); ?> <!-- フッター共通部分 -->

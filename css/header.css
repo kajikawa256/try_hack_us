@@ -8,12 +8,12 @@ div {
 .Menu{
     margin:0 auto;
     letter-spacing: 0.5em;
-    font: 14px/2 "ＭＳ 明朝", serif;
+    font-family: 'Playfair Display', serif;
 }
 
 .HeaderStart{
-    background: linear-gradient(to right,#e60000,#f39800,#fff100,#009944,#0068b7,#1d2088,#920783);
-    font: 14px/2 "MS 明朝", serif;
+    background-color: white;
+    font-family: 'Playfair Display', serif;
 }
 
 .header_flex {
