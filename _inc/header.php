@@ -7,6 +7,9 @@
 <meta name="description" content="<?=$description?>"> <!-- 各ページのdescriptionを反映させる -->
 <link rel="stylesheet" href="../css/style.css">
 <link rel = "stylesheet" href = "../css/header.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Babylonica&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
 
 </head>
 <body>
@@ -15,21 +18,19 @@
          <!-- ヘッダー部分 -->
          <div class = "HeaderStart">
             <h1>Try Hack Us!</h1>
+            <>
+               <ul>
+                  <li><a href = "" title = "クイズ">クイズ</a></li>
+                  <li><a href = "" title = "ランキング">ランキング</a></li>
+                  <li><a href = "" title = "ランキング">参考書</a></li>
+                  <li><a href = "" title = "ランキング">なんか</a></li>
+               </ul>
          </div>
       </header> 
 
 
    
-      <div id = "headerMenu" class = "header_flex">
-         <nav class = "Menu">
-            <ul>
-               <li>クイズ一覧</li>
-               <li>ランキング</li>
-               <li>参考書</li>
-               <li>問題解説</li>
-            </ul>
-         </nav>
-      </div>
+    
 
 
 
