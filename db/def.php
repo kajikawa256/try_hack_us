@@ -4,9 +4,9 @@
 */
 // 管理者アカウント
 define("DB_HOST", "localhost");
-define("DB_USER", "Administrator");
-define("DB_PASS", "Administratorasagod");
-define("DB_NAME", "try_hack_us");
+define("DB_USER", "spic22_hack02");
+define("DB_PASS", "C2vaVW6w");
+define("DB_NAME", "spic22_hack02");
 define("DB_CHARSET", "utf8mb4");
 
 // ダミーアカウント
