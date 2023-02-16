@@ -9,13 +9,6 @@ define("DB_PASS", "C2vaVW6w");
 define("DB_NAME", "spic22_hack02");
 define("DB_CHARSET", "utf8mb4");
 
-// ダミーアカウント
-// define("DB_HOST", "localhost");
-// define("DB_USER", "dummyUser");
-// define("DB_PASS", "iamking");
-// define("DB_NAME", "try_hack_us");
-// define("DB_CHARSET", "utf8mb4");
-
 class dbConnection
 {
   function connection()
