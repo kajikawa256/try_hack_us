@@ -8,10 +8,20 @@
 
 $id = filter_input(INPUT_POST,"id");
 $pass = filter_input(INPUT_POST,"password");
+$flag = filter_input(INPUT_POST,"button");
 
-// idとpassが空ならスルー
-if(isset($id) && isset($pass)){
-        
+$err_msg="";
+
+if(isset($flag)){
+        //初回以外
+        if(true){
+                if(false){
+                        header("Location: ../answer/ans_page_2.php");
+                        echo"a";
+                }else{
+                        $err_msg = "IDまたはパスワードが正しくありません";
+                }
+        }
 }
 
 ?>
@@ -28,7 +38,10 @@ if(isset($id) && isset($pass)){
                 <!-- コンテンツ部分 -->
                 <h2>認証を突破してください。（Lv2）</h2>
 
-                <form action="../answer/ans_page_1.php" method="POST">
+                <form action="./ques_page_2.php" method="POST">
+
+                        <p id="err_message">　<?= $err_msg ?>　</p>
+
                         <div class="contents_elemnt">
                                 <input id="input_element" type="text" name="name" placeholder=" ユーザID">
                         </div>
