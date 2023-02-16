@@ -1,9 +1,9 @@
 -- try_hack_usデータベース作成 --
-DROP DATABASE IF EXISTS try_hack_us;
-CREATE DATABASE try_hack_us;
+DROP DATABASE IF EXISTS spic22_hack02;
+CREATE DATABASE spic22_hack02;
 
 -- データベース移動 --
-USE try_hack_us;
+USE spic22_hack02;
 
 -- ユーザー作成 --
 DROP USER IF EXISTS Administrator;
@@ -21,15 +21,15 @@ CREATE TABLE users (
 );
 
 -- ダミーテーブル作成 --
-CREATE TABLE dummyTable (
-  username VARCHAR(10) NOT NULL,
-  password VARCHAR(50) NOT NULL,
+CREATE TABLE DummyTable (
+  username CHAR(1) NOT NULL,
+  password VARCHAR(20) NOT NULL,
   level int DEFAULT 1
 );
 
 -- ユーザにデータベース権限付与 --
-GRANT ALL ON try_hack_us.* TO Administrator;
-GRANT SELECT ON try_hack_us.dummyTable TO dummyUser;
+GRANT ALL ON spic22_hack02.* TO Administrator;
+GRANT SELECT ON spic22_hack02.dummyTable TO dummyUser;
 
 -- ダミー情報の作成 --
 INSERT INTO dummyTable
