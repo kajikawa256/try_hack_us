@@ -17,13 +17,15 @@
       <header>
          <!-- ヘッダー部分 -->
          <div class = "HeaderStart">
-            <h1>Try Hack Us!</h1>
+            <div class = "HeaderMenu">
+               <h1><a href = "" title = "ホームページへ">Try Hack Us!</a></h1>
                <ul>
-                  <li><a href = "" title = "クイズ">クイズ</a></li>
-                  <li><a href = "" title = "ランキング">ランキング</a></li>
-                  <li><a href = "" title = "ランキング">参考書</a></li>
-                  <li><a href = "" title = "ランキング">なんか</a></li>
+                  <li><a href = "" title = "クイズ">何やつ</a></li>
+                  <li><a href = "" title = "ランキング">何じゃ</a></li>
+                  <li><a href = "" title = "参考書">何用</a></li>
+                  <li><a href = "" title = "なんか">何様</a></li>
                </ul>
+            </div>
          </div>
       </header> 
 
