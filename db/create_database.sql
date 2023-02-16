@@ -21,9 +21,9 @@ CREATE TABLE users (
 );
 
 -- ダミーテーブル作成 --
-CREATE TABLE dummyTable (
-  username VARCHAR(10) NOT NULL,
-  password VARCHAR(50) NOT NULL,
+CREATE TABLE DummyTable (
+  username CHAR(1) NOT NULL,
+  password VARCHAR(20) NOT NULL,
   level int DEFAULT 1
 );
 
