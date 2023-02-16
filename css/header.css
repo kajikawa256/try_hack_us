@@ -24,7 +24,7 @@ div {
     height: 0px;
 }
 
-.HeaderMenu h1:hover{
+.HeaderMenu a:hover{
     color: red;
 }
 
@@ -42,11 +42,11 @@ div {
     /* margin-left:4em; */
     /* margin: 30px 10px 20px 50px; */
     width: 25%;
+    
 }
 
 .HeaderMenu li :hover{
    color: red;
-   font-size: 5px;
 }
 
 .HeaderMenu a{
