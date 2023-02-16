@@ -6,10 +6,8 @@ CREATE DATABASE spic22_hack02;
 USE spic22_hack02;
 
 -- ユーザー作成 --
-DROP USER IF EXISTS Administrator;
-CREATE USER Administrator IDENTIFIED WITH MYSQL_NATIVE_PASSWORD BY 'Administratorasagod';
-DROP USER IF EXISTS dummyUser;
-CREATE USER dummyUser IDENTIFIED WITH MYSQL_NATIVE_PASSWORD BY 'iamking';
+DROP USER IF EXISTS spic22_hack02;
+CREATE USER spic22_hack02 IDENTIFIED WITH MYSQL_NATIVE_PASSWORD BY 'C2vaVW6w';
 
 -- usersテーブル作成 --
 CREATE TABLE users (
@@ -28,8 +26,7 @@ CREATE TABLE DummyTable (
 );
 
 -- ユーザにデータベース権限付与 --
-GRANT ALL ON spic22_hack02.* TO Administrator;
-GRANT SELECT ON spic22_hack02.dummyTable TO dummyUser;
+GRANT ALL ON spic22_hack02.* TO spic22_hack02;
 
 -- ダミー情報の作成 --
 INSERT INTO dummyTable
