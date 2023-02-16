@@ -1,3 +1,4 @@
+
 <?php
 // データベースの接続情報が書かれているファイルを読み込み
 require_once "../db/def.php";
@@ -36,6 +37,7 @@ if (isset($username) && isset($password)) {
 
 <div class="login-page">
   <div class="form">
+
     <form action="./sign_in.php" method="POST">
       <form class="login-form">
         <input type="text" name="username" placeholder="username" />
