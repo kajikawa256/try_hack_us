@@ -18,7 +18,6 @@
          <!-- ヘッダー部分 -->
          <div class = "HeaderStart">
             <h1>Try Hack Us!</h1>
-            <>
                <ul>
                   <li><a href = "" title = "クイズ">クイズ</a></li>
                   <li><a href = "" title = "ランキング">ランキング</a></li>
