@@ -7,7 +7,7 @@
                 <!-- コンテンツ部分 -->
                 <h2>認証を突破してください。（Lv3）</h2>
 
-                <form action="../answer/ans_page_1.php" method="POST">
+                <form action="../question/ques_page_3.php" method="POST">
                         <div class="contents_elemnt">
                                 <input id="input_element" type="text" name="name" placeholder="">
                         </div>

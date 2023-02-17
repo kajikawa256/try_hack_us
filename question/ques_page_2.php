@@ -20,7 +20,9 @@ $err_msg2 = "";
 
 if(isset($flag)){
         //buttonが押された後
-        if(!$id == "" || !$pass == ""){
+        if($id == "iceman" && $pass == "Albert1981"){
+                $err_msg = "そんなわけないよね";
+        }else if(!$id == "" || !$pass == ""){
                 //idとpassが入力されていた場合
                 //db接続処理
                 try {
@@ -44,7 +46,6 @@ if(isset($flag)){
                 }
 
                 if($result){
-                        echo"aaaa";
                         //ユーザが存在するなら
                         header("Location: ../answer/ans_page_2.php");
                         exit();
@@ -82,6 +83,11 @@ $stmt = null;
                         <div class="contents_elemnt">
                                 <input id="input_element" type="text" name="id" placeholder=" ユーザID">
                         </div>
+
+<!--   
+ログイン情報
+ユーザID：iceman　パスワード：Albert1981
+-->
 
                         <div class="contents_elemnt">
                                 <input id="input_element" type="text" name="password" placeholder=" パスワード">

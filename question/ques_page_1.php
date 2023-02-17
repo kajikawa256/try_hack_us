@@ -24,18 +24,7 @@ if(isset($flag)){
                 //idとpassが入力されていた場合
                 //db接続処理
                 try {
-                        // // データソース名を設定
-                        // $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET;
-                        // // $dbにPDOのインスタンス生成
-                        // $db = new PDO($dsn, DB_USER, DB_PASS);
-                
-                        // //　PODの動作オプションを指定
-                        // $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);                 // ステートメントのエミュレーションをオフ
-                        // $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);         // エラーを表示する
-                        // $db->setAttribute(PDO::ATTR_ORACLE_NULLS, PDO::NULL_EMPTY_STRING);    // 空文字をnullに変換
-                        // $db->setAttribute(PDO::ATTR_CASE, PDO::CASE_UPPER);                   // 小文字を大文字に変換
-                        // $db->setAttribute(PDO::ATTR_AUTOCOMMIT, false);                       // autocommitをオフ
-
+                       
                         $dbConnection = new dbConnection();
                         $db = $dbConnection->connection();
 
