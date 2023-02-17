@@ -4,22 +4,33 @@
 .top{
     text-align:center;
 }
+/*ランキング*/
 .ranking{
     text-align: right;
     font-size: 20px;
 }
-button{
+/*問題へボタン*/
+.btn{
+    width: 128px;
+    height: 64px;
+    font-size: 32px;
     text-align: center;
+    border: none;
+    background-color: #5ab4bd;
+    color: white;
+    margin-bottom: 10px;
 }
 .text{
     text-align: center;
+    font-size: 19px;
 }
+/*タブ*/
 .tabs {
     margin-top: 50px;
     padding-bottom: 40px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    width: 700px;
+    width: 750px;
     margin: 0 auto;}
   
   /*タブのスタイル*/
