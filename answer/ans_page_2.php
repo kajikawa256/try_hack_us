@@ -2,7 +2,7 @@
         $_POST["button"] = "";
 ?>
 
-<?php $title = "問題レベル1　突破!";?> <!-- headのtitleに反映させる -->
+<?php $title = "問題レベル2　突破!";?> <!-- headのtitleに反映させる -->
 <?php $description = "congratulation";?> <!-- headのdescriptionに反映させる -->
 <?php include("../_inc/header.php"); ?>  <!-- ヘッダー共通部分 -->
 <link rel="stylesheet" href="../css/question_page.css">

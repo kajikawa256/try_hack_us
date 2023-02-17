@@ -3,12 +3,7 @@
 // データベースの接続情報が書かれているファイルを読み込み
 require_once "../db/def.php";
 
-# ログインしていない人はログインページへ飛ばす
-// session_start();
-// if(!isset($_SESSION["USER_ID"])){
-//         header("Location: ../register/sign_in.php");
-// }
-
+//変数宣言
 $id = filter_input(INPUT_POST,"id");
 $pass = filter_input(INPUT_POST,"password");
 $flag = filter_input(INPUT_POST,"button");
