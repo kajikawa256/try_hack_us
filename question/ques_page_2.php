@@ -32,7 +32,6 @@ if(isset($flag)){
 
                         // 脆弱性のあるSQL文
                         $stmt = $db -> query("SELECT * FROM dummytable WHERE level = 2 and username='$id' and password='$pass'");
-                        var_dump($stmt);
                         $stmt -> execute();
                         $result = $stmt -> fetch(PDO::FETCH_ASSOC); 
 
