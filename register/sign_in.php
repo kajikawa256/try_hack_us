@@ -7,7 +7,7 @@ require_once "../db/def.php";
 $username = filter_input(INPUT_POST, "username");
 $password = filter_input(INPUT_POST, "password");
 
-//空白削除
+// 空白削除
 $username = trim($username);
 $password = trim($password);
 
@@ -17,26 +17,23 @@ $result = [
   "errMsg" => "",
 ];
 
-//存在チェック(username)
+// 存在チェック(username)
 if(!(isset($username))){
   $result["status"] = false;
   $result["errMsg"] = "ユーザー名を入力してください";
 }
 
-//存在チェック(password)
+// 存在チェック(password)
 if(!(isset($password))){
   $result["status"] = false;
   $result["errMsg"] = "パスワードを入力してください";
 }
 
-//文字数判定
+// 文字数判定
 if(strlen($username) > 10 || strlen($password) > 50){
   $result["status"] = false;
   $result["errMsg"] = "文字数が超過しています";
 }
-
-
-
 
 // usernameとpasswordが送られてきていた場合のみ
 if ($result["status"]) {

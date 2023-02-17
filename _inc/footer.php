@@ -1,7 +1,7 @@
 
 
 <!-- フッター部分 -->
-<footer>
+<!-- <footer>
   <ul class="footer-menu">
      <li>home ｜</li>
      <li>about ｜</li>
@@ -14,4 +14,4 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="./js/init.js"></script>
 </body>
-</html>
+</html>  -->
