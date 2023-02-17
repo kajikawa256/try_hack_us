@@ -84,7 +84,6 @@ if(isset($flag)){
 
                         <p id="err_message">　<?php if($err_msg2 != ""){echo $err_msg2;}else{echo $err_msg;} ?>　</p>
 
-
                         <div class="contents_elemnt">
                                 <input id="input_element" type="text" name="id" placeholder=" ユーザID">
                         </div>

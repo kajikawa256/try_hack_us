@@ -77,7 +77,7 @@ $stmt = null;
 
                 <form action="./ques_page_2.php" method="POST">
 
-                        <p id="err_message">　<?= $err_msg ?>　</p>
+                        <p id="err_message">　<?php if($err_msg2 != ""){echo $err_msg2;}else{echo $err_msg;} ?>　</p>
 
                         <div class="contents_elemnt">
                                 <input id="input_element" type="text" name="id" placeholder=" ユーザID">
