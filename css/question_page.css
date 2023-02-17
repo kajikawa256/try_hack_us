@@ -4,14 +4,7 @@ h2{
 
 .contents{
   font-family: "sans-serif","メイリオ";
-  text-align: center;
-  margin-left: 20%;
-  margin-right: 20%;
-  margin-top: 40px;
-  padding-top: 30px;
-  font-size: 1.5em;
-  background-color: white;
-  height: 400px;
+  width: 900px;
 }
 
 .contents_elemnt{
