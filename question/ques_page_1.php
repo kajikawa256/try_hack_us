@@ -74,7 +74,7 @@ if(isset($flag)){
 
 <!--   
 ログイン情報
-ユーザID：a　パスワード：level1
+ユーザID：admin　パスワード：abc12345
 -->
 
                         <div class="contents_elemnt">
