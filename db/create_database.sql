@@ -20,7 +20,7 @@ CREATE TABLE users (
 
 -- ダミーテーブル作成 --
 CREATE TABLE DummyTable (
-  username CHAR(1) NOT NULL,
+  username VARCHAR(10) NOT NULL,
   password VARCHAR(20) NOT NULL,
   level int DEFAULT 1
 );
@@ -30,7 +30,7 @@ GRANT ALL ON spic22_hack02.* TO spic22_hack02;
 
 -- ダミー情報の作成 --
 INSERT INTO dummyTable
-VALUES ('a','level1',1),('b','level2',2),('c','level3',3);
+VALUES ('admin','abc12345',1),('root','Xb4DPJZM',2),('Anonymous','BkFh6RbpJsaX',3);
 
 -- サンプルのユーザー情報を作成 --
 INSERT INTO users(username,password)
