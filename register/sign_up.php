@@ -13,7 +13,7 @@
     <form class="login-form">
       <input type="text" placeholder="username"/>
       <input type="password" placeholder="password"/>
-      <button>RESISTER</button>
+      <button type = "submit">RESISTER</button>
     </form>
   </div>
 </div>
