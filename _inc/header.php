@@ -1,3 +1,17 @@
+<?php
+
+//セッションを使うことを宣言
+session_start();
+
+//ログイン状態出ない場合sign_in.phpページにリダイレクト
+if(!isset($_SESSION["login"])){
+   header("Location: ../register/sign_in.php");
+}
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
