@@ -32,4 +32,8 @@ GRANT ALL ON spic22_hack02.* TO spic22_hack02;
 INSERT INTO dummyTable
 VALUES ('a','level1',1),('b','level2',2),('c','level3',3);
 
+-- サンプルのユーザー情報を作成 --
+INSERT INTO users(username,password)
+VALUES ("Sample","Sample00Sample!");
+
 commit;
