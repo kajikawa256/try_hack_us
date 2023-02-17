@@ -103,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $db->commit();
 
       // indexに遷移
-      header("Location: ../top/index.php");
+      header("Location: ./sign_in.php");
     } catch (PDOException $e) {
       echo $e;
     } finally {
