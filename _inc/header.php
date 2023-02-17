@@ -1,12 +1,12 @@
 <?php
 
 //セッションを使うことを宣言
-session_start();
+// session_start();
 
 //ログイン状態出ない場合sign_in.phpページにリダイレクト
-if (!isset($_SESSION["login"])) {
-   header("Location: ../register/sign_in.php");
-}
+// if(!isset($_SESSION["login"])){
+//    header("Location: ../register/sign_in.php");
+// }
 
 
 
@@ -32,14 +32,14 @@ if (!isset($_SESSION["login"])) {
    <div class="wrapper">
       <header>
          <!-- ヘッダー部分 -->
-         <div class="HeaderStart">
-            <div class="HeaderMenu">
-               <h1><a href="" title="ホームページへ">Try Hack Us!</a></h1>
+         <div class = "HeaderStart">
+            <div class = "HeaderMenu">
+               <h1><a href = "../top/index.php" title = "ホームページへ">Try Hack Us!</a></h1>
                <ul>
-                  <li><a href="" title="クイズ">何やつ</a></li>
-                  <li><a href="" title="ランキング">何じゃ</a></li>
-                  <li><a href="" title="参考書">何用</a></li>
-                  <li><a href="" title="なんか">何様</a></li>
+                  <li><a href = "../question/ques_page_1.php" title = "クイズ">何やつ</a></li>
+                  <li><a href = "../ranking/ranking.php" title = "ランキング">何じゃ</a></li>
+                  <li><a href = "" title = "参考書">何用</a></li>
+                  <li><a href = "" title = "なんか">何様</a></li>
                </ul>
             </div>
          </div>
