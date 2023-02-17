@@ -37,6 +37,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
 
   /*
+  文字数制限を超えていないか
+  */
+  if ($result["status"]) {
+    $count = 10;
+    if (mb_strlen($user) > $count) {
+      $result["status"] = false;
+      $result["errMsg"] = $result["errMsg"] . "ユーザー名は10文字以内にしてください<br>";
+    }
+    $count = 20;
+    if (mb_strlen($password) > $count) {
+      $result["status"] = false;
+      $result["errMsg"] = $result["errMsg"] . "パスワードは20文字以内にしてください<br>";
+    }
+  }
+
+  /*
+  パスワードとリピートが一致しているか
+  */
+  if ($password !== $repeat) {
+    $result["status"] = false;
+    $result["errMsg"] = $result["errMsg"] . "リピートパスワードが違います<br>";
+  }
+
+  /*
   statusがfalseでなかった場合
   usernameが使われていないかのチェック
   */
