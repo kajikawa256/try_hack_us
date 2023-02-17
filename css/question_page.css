@@ -1,20 +1,51 @@
 h2{
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 }
 
 .contents{
+  font-family: "sans-serif","メイリオ";
   text-align: center;
-  margin-left: 3em;
-  margin-right: 3em;
+  margin-left: 20%;
+  margin-right: 20%;
   margin-top: 40px;
   padding-top: 30px;
   font-size: 1.5em;
   background-color: white;
-  height: 300px;
+  height: 400px;
 }
 
 .contents_elemnt{
   margin-top: 3px;
+}
+
+#err_message{
+  font-size: small;
+  color: red;
+  font-weight: bold;
+}
+
+#next_button{
+  margin-top: 30px;
+}
+
+#button_text{
+  text-decoration: none;
+  color: black;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+#sentence{
+  margin-top: 80px;
+}
+
+#sentence p{
+  font-size: medium;
+  color: red;
+}
+
+#sentence #next_message{
+  color: black;
 }
 
 #rogin_button input{

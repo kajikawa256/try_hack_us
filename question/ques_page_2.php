@@ -1,5 +1,8 @@
 <?php
 
+// データベースの接続情報が書かれているファイルを読み込み
+require_once "../db/def.php";
+
 # ログインしていない人はログインページへ飛ばす
 // session_start();
 // if(!isset($_SESSION["USER_ID"])){
@@ -8,11 +11,55 @@
 
 $id = filter_input(INPUT_POST,"id");
 $pass = filter_input(INPUT_POST,"password");
+$flag = filter_input(INPUT_POST,"button");
+$result = false;
 
-// idとpassが空ならスルー
-if(isset($id) && isset($pass)){
-        
+$err_msg="";
+$err_msg2 = "";
+
+
+if(isset($flag)){
+        //buttonが押された後
+        if(!$id == "" || !$pass == ""){
+                //idとpassが入力されていた場合
+                //db接続処理
+                try {
+                        //db接続設定
+                        $dbConnection = new dbConnection();
+                        $db = $dbConnection->connection();
+
+                        // 脆弱性のあるSQL文
+                        $stmt = $db -> query("SELECT * FROM dummytable WHERE level = 2 and username='$id' and password='$pass'");
+                        var_dump($stmt);
+                        $stmt -> execute();
+                        $result = $stmt -> fetch(PDO::FETCH_ASSOC); 
+
+                }catch (PDOExeption $e) {
+                        echo $poe;
+                }catch(Exception $poe){
+                        $err_msg2 = $poe; 
+                }finally{
+                        $db = null;
+                        $stmt = null;
+                }
+
+                if($result){
+                        echo"aaaa";
+                        //ユーザが存在するなら
+                        header("Location: ../answer/ans_page_2.php");
+                        exit();
+                }else{
+                        //ユーザが存在しないなら
+                        $err_msg = "IDまたはパスワードが正しくありません";
+                }
+        }else{
+                //idかpassが入力されていない場合
+                $err_msg = "IDまたはパスワードが正しくありません";
+        }
 }
+
+$db = null;
+$stmt = null;
 
 ?>
 
@@ -28,9 +75,12 @@ if(isset($id) && isset($pass)){
                 <!-- コンテンツ部分 -->
                 <h2>認証を突破してください。（Lv2）</h2>
 
-                <form action="../answer/ans_page_1.php" method="POST">
+                <form action="./ques_page_2.php" method="POST">
+
+                        <p id="err_message">　<?php if($err_msg2 != ""){echo $err_msg2;}else{echo $err_msg;} ?>　</p>
+
                         <div class="contents_elemnt">
-                                <input id="input_element" type="text" name="name" placeholder=" ユーザID">
+                                <input id="input_element" type="text" name="id" placeholder=" ユーザID">
                         </div>
 
                         <div class="contents_elemnt">
