@@ -1,0 +1,12 @@
+ctrl + @ でコマンドパレット起動
+
+!!!以下の操作を行う前にカレントディレクトリが C:\Sites\try_hack_us\db になっていることを確認 !!! なっていなければ cd db と打つ。 
+
+mysql -u root -p --verbose
+pass:root
+
+source create_database.sql -- データベース作成
+
+show databases; -- データベース一覧表示
+use try_hack_us -- 使用するテーブルを選択
+show tables; -- テーブル一覧表示
