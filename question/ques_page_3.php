@@ -1,3 +1,14 @@
+<?php
+
+$flag = filter_input(INPUT_GET,"page");
+
+if($flag == ""){
+        echo "gocha!";
+        header("Location: ./login.php?page=ques_page_3.php");
+}
+        
+?>
+
 <?php $title = "問題レベル3";?> <!-- headのtitleに反映させる -->
 <?php $description = "You are script kidy hahaha";?> <!-- headのdescriptionに反映させる -->
 <?php include("../_inc/header.php"); ?>  <!-- ヘッダー共通部分 -->

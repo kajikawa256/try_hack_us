@@ -1,5 +1,5 @@
-<?php $title = "トップページ";?> <!-- headのtitleに反映させる -->
-<?php $description = "トップページの説明";?> <!-- headのdescriptionに反映させる -->
+<?php $title = "問題レベル3　突破!";?> <!-- headのtitleに反映させる -->
+<?php $description = "congratulation";?> <!-- headのdescriptionに反映させる -->
 <?php include("../_inc/header.php"); ?>  <!-- ヘッダー共通部分 -->
 
        <div class="contents">
