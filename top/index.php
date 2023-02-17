@@ -5,56 +5,64 @@
 
        <div class="contents">
                 <!-- コンテンツ部分 -->
-                <h2 class="tops">あなたの機器は本当に安全ですか？</h2>
+                <h2 class="tops">あなたのセキュリティは本当に安全ですか？</h2>
                 <div class="ranking">
                 <p>ランキング</p>
                 <p>1位<br>@@@</p>
                 </div>
                 <h1 class="top">ようこそ！<br>〇〇さん</h1>
 
-                <button onclick="location.href='https://www.google.com/'">問題へ</button>
+                <button class="btn" onclick="location.href='../question/ques_page_1.php'">問題へ</button>
 
-                <section class="tab_contents">
-                        <div class="tab_wrap">
-                                <input id="tab1" type="radio" name="check" checked>
-                                <label for="tab1" class="tab_lab1">Tab1</label>
-                                <input id="tab2" type="radio" name="check">
-                                <label for="tab2" class="tab_lab1">Tab2</label>
-                                <input id="tab3" type="radio" name="check">
-                                <label for="tab3" class="tab_lab1">Tab3</label>
-                                <div class="panels">
-                                        <div id="area1" class="panel">
-                                                <ul class="panel_content">
-                                                <li>ボックス内コンテンツ1</li>
-                                                <li>ボックス内コンテンツ</li>
-                                                <li>ボックス内コンテンツ</li>
-                                                </ul>
-                                        </div>
-                                        <div id="area2" class="panel">
-                                                <ul class="panel_content">
-                                                <li>ボックス内コンテンツ2</li>
-                                                <li>ボックス内コンテンツ</li>
-                                                <li>ボックス内コンテンツ</li>
-                                                </ul>
-                                        </div>
-                                        <div id="area3" class="panel">
-                                                <ul class="panel_content">
-                                                <li>ボックス内コンテンツ3</li>
-                                                <li>ボックス内コンテンツ</li>
-                                                <li>ボックス内コンテンツ</li>
-                                                </ul>
-                                        </div>
+                <div class="tabs">
+                        <input id="all" type="radio" name="tab_item" checked>
+                        <label class="tab_item" for="all">脆弱性とは</label>
+                        <input id="programming" type="radio" name="tab_item">
+                        <label class="tab_item" for="programming">脆弱性の例</label>
+                        <input id="design" type="radio" name="tab_item">
+                        <label class="tab_item" for="design">ヴぁヴぁばぁ</label>
+                        <!-- 脆弱性とは -->
+                        <div class="tab_content" id="all_content">
+                                <div class="tab_content_description">
+                                        <p class="c-txtsp">コンピュータのOSやソフトウェアにおいて、プログラムの不具合や設計上のミスが原因となって発生した情報セキュリティ上の欠陥のことを言います。</p>
                                 </div>
                         </div>
-                </section>
+                        <!-- 例 -->
+                        <div class="tab_content" id="programming_content">
+                                <div class="tab_content_description">
+                                        <p class="c-txtsp">
+                                                <ul>
+                                                        <li>SQLインジェクション</li>
+                                                        <li>クロスサイト・スクリプティング</li>
+                                                        <li>CSRF（クロスサイト・リクエスト・フォージェリ）
+                                                        <li>パス名パラメータの未チェック/ディレクトリ・トラバーサル</li>
+                                                        <li>OSコマンド・インジェクション</li>
+                                                        <li>セッション管理の不備</li>
+                                                        <li>HTTPヘッダ・インジェクション</li>
+                                                        <li>HTTPSの不適切な利用</li>
+                                                        <li>サービス運用妨害(DoS)</li>
+                                                        <li>メール不正中継</li>
+                                                </ul>
+                                        </p>
+                                </div>
+                        </div>
+                        <!--  -->
+                        <div class="tab_content" id="design_content">
+                                <div class="tab_content_description">
+                                        <p class="c-txtsp">ヴぁヴぁばぁ</p>
+                                </div>
+                        </div>
+                </div>
 
 
-                <p class="text" style="text-align:center">特殊文字を適切に処理できていないと、スクリプトを実行できてしまったり、意図しない動作が行われる可能性があります。
-                <br>例を挙げるとSQLインジェクションやXXSなどです。これらの脆弱性は実際に体験してみないと理解をするこ
-                <br>とが難しいと考えました。脆弱性を実際に攻撃できる謎解きサイトです。
-                <br>ただ単にコピペで入力して処理を実行するだけでは面白みがないのでCTFで使われているflagのようなものを用意する
-                <br>ことで脆弱性の学習と同時に謎解きも楽しめるというサイトです。問題を解けない人のためにヒントや解答も用意し
-                <br>問題を解くスピードを計測することでランキング機能も実装したいと考えています。</p>
+                <p class="text">
+                特殊文字を適切に処理できていないと、スクリプトを実行できてしまったり、意図しない動作が行わ
+                <br>れる可能性があります。例を挙げるとSQLインジェクションやXXSなどです。これらの脆弱性は実
+                <br>際に体験してみないと理解をすることが難しいと考えました。脆弱性を実際に攻撃できる謎解き
+                <br>サイトです。ただ単にコピペで入力して処理を実行するだけでは面白みがないのでCTFで使われ
+                <br>ているflagのようなものを用意することで脆弱性の学習と同時に謎解きも楽しめるというサイト
+                <br>です。
+                </p>
                 
         </div>
 <?php include("../_inc/footer.php"); ?> <!-- フッター共通部分 -->
