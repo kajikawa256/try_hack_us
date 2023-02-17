@@ -8,8 +8,8 @@ $username = filter_input(INPUT_POST, "username");
 $password = filter_input(INPUT_POST, "password");
 
 // 空白削除
-$username = trim($username);
-$password = trim($password);
+$username = trim((String)$username);
+$password = trim((String)$password);
 
 // 送られてきた情報管理配列
 $result = [
@@ -41,14 +41,14 @@ if ($result["status"]) {
     // データベースに接続
     $dbConnection = new dbConnection();
     $db = $dbConnection->connection();
-
-
   } catch (PDOException $e) {
     echo $e;
   } finally {
     // nullにして接続を終了
     $db = null;
   }
+}else{
+  echo $errMsg;
 }
 
 ?>
@@ -61,13 +61,10 @@ if ($result["status"]) {
 
 <div class="login-page">
   <div class="form">
-
-    <form action="./sign_in.php" method="POST">
-      <form class="login-form">
-        <input type="text" name="username" placeholder="username" />
-        <input type="password" name="password" placeholder="password" />
-        <button>LOGIN</button>
-      </form>
+    <form action="../register/sign_in.php" method="POST">
+      <input type="text" name="username" placeholder="username" />
+      <input type="password" name="password" placeholder="password" />
+      <button type="submit">LOGIN</button>
     </form>
   </div>
 </div>
