@@ -1,8 +1,11 @@
 <?php
 
+require_once "../db/def.php";
+
 // 送られてきた値を受け取り
-$user = filter_input(INPUT_POST, "name");
+$user = filter_input(INPUT_POST, "username");
 $password = filter_input(INPUT_POST, "password");
+$repeat = filter_input(INPUT_POST, "repeatPassword");
 
 // 送られてきた情報管理配列
 $result = [
@@ -11,8 +14,104 @@ $result = [
 ];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-}
 
+  // 空白削除
+  $user = trim((string)$user);
+  $password = str_replace("( |　)+", "", $password);
+  $password = str_replace(" ", "", $password);
+
+  /*
+  空白だった場合
+  */
+  if (empty($user)) {
+    $result["status"] = false;
+    $result["errMsg"] = $result["errMsg"] . "ユーザー名を入力してください<br>";
+  }
+  if (empty($password)) {
+    $result["status"] = false;
+    $result["errMsg"] = $result["errMsg"] . "パスワードを入力してください<br>";
+  }
+  if (empty($repeat)) {
+    $result["status"] = false;
+    $result["errMsg"] = $result["errMsg"] . "パスワードをもう一度入力してください<br>";
+  }
+
+  /*
+  statusがfalseでなかった場合
+  usernameが使われていないかのチェック
+  */
+  if ($result["status"]) {
+    try {
+      $dbConnection = new dbConnection();
+      $db = $dbConnection->connection();
+
+      // SQL文を設定
+      $sql = "SELECT count(username)
+              FROM users
+              WHERE username = :username";
+
+      // stmtにsql文をセット
+      $stmt = $db->prepare($sql);
+
+      // バインドパラムし値を設定
+      $stmt->bindParam(':username', $user, PDO::PARAM_STR);
+
+      // 実行
+      $stmt->execute();
+
+      //product_noをキーにDBからレコードを取得
+      $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+      if ($row["COUNT(USERNAME)"]  == 1) {
+        $result["status"] = false;
+        $result["errMsg"] = $result["errMsg"] . "このユーザー名はすでに使われています！<br>";
+      }
+    } catch (PDOException $e) {
+      echo $e;
+    } finally {
+      $db = null;
+      $stmt = null;
+    }
+  }
+  /*
+  statusがfalseでなかった場合
+  user情報の登録
+  */
+  if ($result["status"]) {
+    try {
+      $dbConnection = new dbConnection();
+      $db = $dbConnection->connection();
+
+      // SQL文を設定
+      $sql = "INSERT INTO users(username, password)
+              VALUES (:username,:password)";
+
+      // stmtにsql文をセット
+      $stmt = $db->prepare($sql);;
+
+      // バインドパラムし値を設定
+      $stmt->bindParam(':username', $user, PDO::PARAM_STR);
+      $stmt->bindParam(':password', password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);
+
+      // トランザクション開始
+      $db->beginTransaction();
+
+      // 実行
+      $stmt->execute();
+
+      // コミット
+      $db->commit();
+
+      // indexに遷移
+      header("Location: ../top/index.php");
+    } catch (PDOException $e) {
+      echo $e;
+    } finally {
+      $stmt = null;
+      $db = null;
+    }
+  }
+}
 
 ?>
 <html lang="ja">
@@ -37,9 +136,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <form class="login-form" action="./sign_up.php" method="POST">
         <input type="text" name="username" placeholder="username" />
         <input type="password" name="password" placeholder="password" />
+        <input type="password" name="repeatPassword" placeholder="repeatPassword" />
         <button>RESISTER</button>
       </form>
     </div>
+    <?= $result["errMsg"] ?>
   </div>
 
 </body>
