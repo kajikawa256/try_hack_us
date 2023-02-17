@@ -17,7 +17,7 @@
                 </div>
                 <div id="next_button">
                         <form action="../question/ques_page_3.php">
-                                <button><a href="../question/ques_page_3.php" id="button_text">次へ</a></button>
+                                <button><a href="../question/login.php?page='ques_page_3.php'" id="button_text">次へ</a></button>
                         </form>
                 </div>
         </div>
