@@ -4,11 +4,24 @@
    /* background-repeat: no-repeat;
    width: 100%;
    height: 100%;*/
- } 
- 
- body{
-   font-family: 'Playfair Display', serif;
-   background: #76b852; /* fallback for old browsers */
-   background: rgb(141,194,111);
-   background: linear-gradient(90deg, rgba(141,194,111,1) 0%, rgba(118,184,82,1) 50%);
+
  }
+
+ body {
+   background: #76b852;
+   /* fallback for old browsers */
+   background: rgb(141, 194, 111);
+   background: linear-gradient(90deg, rgba(141, 194, 111, 1) 0%, rgba(118, 184, 82, 1) 50%);
+ }
+
+ .contents {
+   text-align: center;
+   margin-left: 20%;
+   margin-right: 20%;
+   margin-top: 40px;
+   padding-top: 30px;
+   font-size: 1.5em;
+   background-color: white;
+   height: 400px;
+ }
+
