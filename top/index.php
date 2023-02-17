@@ -14,39 +14,29 @@
 
                 <button onclick="location.href='https://www.google.com/'">問題へ</button>
 
-                <section class="tab_contents">
-                        <div class="tab_wrap">
-                                <input id="tab1" type="radio" name="check" checked>
-                                <label for="tab1" class="tab_lab1">Tab1</label>
-                                <input id="tab2" type="radio" name="check">
-                                <label for="tab2" class="tab_lab1">Tab2</label>
-                                <input id="tab3" type="radio" name="check">
-                                <label for="tab3" class="tab_lab1">Tab3</label>
-                                <div class="panels">
-                                        <div id="area1" class="panel">
-                                                <ul class="panel_content">
-                                                <li>ボックス内コンテンツ1</li>
-                                                <li>ボックス内コンテンツ</li>
-                                                <li>ボックス内コンテンツ</li>
-                                                </ul>
-                                        </div>
-                                        <div id="area2" class="panel">
-                                                <ul class="panel_content">
-                                                <li>ボックス内コンテンツ2</li>
-                                                <li>ボックス内コンテンツ</li>
-                                                <li>ボックス内コンテンツ</li>
-                                                </ul>
-                                        </div>
-                                        <div id="area3" class="panel">
-                                                <ul class="panel_content">
-                                                <li>ボックス内コンテンツ3</li>
-                                                <li>ボックス内コンテンツ</li>
-                                                <li>ボックス内コンテンツ</li>
-                                                </ul>
-                                        </div>
+                <div class="tabs">
+                        <input id="all" type="radio" name="tab_item" checked>
+                        <label class="tab_item" for="all">総合</label>
+                        <input id="programming" type="radio" name="tab_item">
+                        <label class="tab_item" for="programming">プログラミング</label>
+                        <input id="design" type="radio" name="tab_item">
+                        <label class="tab_item" for="design">デザイン</label>
+                        <div class="tab_content" id="all_content">
+                                <div class="tab_content_description">
+                                        <p class="c-txtsp">総合の内容がここに入ります</p>
                                 </div>
                         </div>
-                </section>
+                        <div class="tab_content" id="programming_content">
+                                <div class="tab_content_description">
+                                        <p class="c-txtsp">プログラミングの内容がここに入ります</p>
+                                </div>
+                        </div>
+                        <div class="tab_content" id="design_content">
+                                <div class="tab_content_description">
+                                        <p class="c-txtsp">デザインの内容がここに入ります</p>
+                                </div>
+                        </div>
+                </div>
 
 
                 <p class="text" style="text-align:center">特殊文字を適切に処理できていないと、スクリプトを実行できてしまったり、意図しない動作が行われる可能性があります。
