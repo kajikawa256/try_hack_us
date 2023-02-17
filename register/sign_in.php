@@ -7,18 +7,42 @@ require_once "../db/def.php";
 $username = filter_input(INPUT_POST, "username");
 $password = filter_input(INPUT_POST, "password");
 
+// 空白削除
+$username = trim($username);
+$password = trim($password);
+
 // 送られてきた情報管理配列
 $result = [
   "status" => true,
   "errMsg" => "",
 ];
 
+// 存在チェック(username)
+if(!(isset($username))){
+  $result["status"] = false;
+  $result["errMsg"] = "ユーザー名を入力してください";
+}
+
+// 存在チェック(password)
+if(!(isset($password))){
+  $result["status"] = false;
+  $result["errMsg"] = "パスワードを入力してください";
+}
+
+// 文字数判定
+if(strlen($username) > 10 || strlen($password) > 50){
+  $result["status"] = false;
+  $result["errMsg"] = "文字数が超過しています";
+}
+
 // usernameとpasswordが送られてきていた場合のみ
-if (isset($username) && isset($password)) {
+if ($result["status"]) {
   try {
     // データベースに接続
     $dbConnection = new dbConnection();
     $db = $dbConnection->connection();
+
+
   } catch (PDOException $e) {
     echo $e;
   } finally {
