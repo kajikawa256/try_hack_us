@@ -25,7 +25,7 @@ $result = [
 if($username == "" || $password == ""){
   $result['errMsg'] = "ユーザー名またはパスワードを入力してください";
   $result["status"] = false;
-  var_dump($result);
+  // var_dump($result);
 }
 
 // 空白削除
