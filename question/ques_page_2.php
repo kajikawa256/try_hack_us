@@ -3,12 +3,7 @@
 // データベースの接続情報が書かれているファイルを読み込み
 require_once "../db/def.php";
 
-# ログインしていない人はログインページへ飛ばす
-// session_start();
-// if(!isset($_SESSION["USER_ID"])){
-//         header("Location: ../register/sign_in.php");
-// }
-
+//変数宣言
 $id = filter_input(INPUT_POST,"id");
 $pass = filter_input(INPUT_POST,"password");
 $flag = filter_input(INPUT_POST,"button");
@@ -20,7 +15,9 @@ $err_msg2 = "";
 
 if(isset($flag)){
         //buttonが押された後
-        if(!$id == "" || !$pass == ""){
+        if($id == "iceman" && $pass == "Albert1981"){
+                $err_msg = "そんなわけないよね";
+        }else if(!$id == "" || !$pass == ""){
                 //idとpassが入力されていた場合
                 //db接続処理
                 try {
@@ -30,7 +27,6 @@ if(isset($flag)){
 
                         // 脆弱性のあるSQL文
                         $stmt = $db -> query("SELECT * FROM dummytable WHERE level = 2 and username='$id' and password='$pass'");
-                        var_dump($stmt);
                         $stmt -> execute();
                         $result = $stmt -> fetch(PDO::FETCH_ASSOC); 
 
@@ -44,7 +40,6 @@ if(isset($flag)){
                 }
 
                 if($result){
-                        echo"aaaa";
                         //ユーザが存在するなら
                         header("Location: ../answer/ans_page_2.php");
                         exit();
@@ -82,6 +77,11 @@ $stmt = null;
                         <div class="contents_elemnt">
                                 <input id="input_element" type="text" name="id" placeholder=" ユーザID">
                         </div>
+
+<!--   
+ログイン情報
+ユーザID：iceman　パスワード：Albert1981
+-->
 
                         <div class="contents_elemnt">
                                 <input id="input_element" type="text" name="password" placeholder=" パスワード">
