@@ -30,7 +30,7 @@
     padding-bottom: 40px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    width: 750px;
+    width: 800px;
     margin: 0 auto;}
   
   /*タブのスタイル*/
@@ -79,4 +79,10 @@
     background-color: #5ab4bd;
     color: #fff;
   }
-  
+  .c-txtsp{
+    text-align: left;
+  }
+  .topul{
+    list-style: disc;
+    text-align: left;
+  }
