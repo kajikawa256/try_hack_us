@@ -10,7 +10,7 @@
                 <p>ランキング</p>
                 <p>1位<br>@@@</p>
                 </div>
-                <h1 class="top">ようこそ！<br>〇〇さん</h1>
+                <h1 class="top">ようこそ！<br><?= $_SESSION["name"] ?>さん</h1>
 
                 <button class="btn" onclick="location.href='../question/ques_page_1.php'">問題へ</button>
 

@@ -1,10 +1,14 @@
-
 <?php
 // データベースの接続情報が書かれているファイルを読み込み
 require_once "../db/def.php";
 
-//セッションを使うことを宣言
+
+// セッションを使うことを宣言
 session_start();
+
+if(isset($_SESSION["id"])){
+  unset($_SESSION["id"]);
+}
 
 // ログイン情報の受け取り
 $username = filter_input(INPUT_POST, "username");
@@ -41,7 +45,6 @@ if(!empty($_POST)){
       $stmt -> bindParam(1,$username,PDO::PARAM_STR, 10);
       $stmt -> execute();
       $dbresult = $stmt -> fetch(PDO::FETCH_ASSOC);
-      var_dump($dbresult);
     }
     catch(PDOExeption $e){
       exit('データベースエラー');
@@ -56,7 +59,10 @@ if(!empty($_POST)){
       //正しいとき
       else{
         session_regenerate_id(TRUE); //セッションidを再発行
-        $_SESSION["login"] = $dbresult["ID"];//セッションにログイン情報を登録
+        $_SESSION["id"] = $dbresult["ID"];//セッションにログイン情報を登録
+        $_SESSION["level"] = $dbresult["LEVEL"];
+        $_SESSION["name"] = $dbresult["USERNAME"];
+
         header("Location: ../top/index.php");//ログイン後のページにリダイレクト
         exit();
       }
@@ -69,19 +75,32 @@ if(!empty($_POST)){
 
 ?>
 
-<?php $title = "トップページ"; ?> <!-- headのtitleに反映させる -->
-<?php $description = "トップページの説明"; ?> <!-- headのdescriptionに反映させる -->
-<?php include("../_inc/header.php"); ?> <!-- ヘッダー共通部分 -->
-<link rel="stylesheet" href="../css/sign_up.css">
+<html lang="ja">
 
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>サインアップ</title> <!-- 各ページのtitleを反映させる -->
+  <meta name="description" content="新規登録"> <!-- 各ページのdescriptionを反映させる -->
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/register.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Babylonica&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
 
+</head>
+
+<body>
 
 <div class="login-page">
   <div class="form">
     <form action="../register/sign_in.php" method="POST">
       <input type="text" name="username" placeholder="username" />
       <input type="password" name="password" placeholder="password" />
-      <button>LOGIN</button>
+      <button>ログイン</button>
+      <div id="link_msg">
+        <a id="link" href="./sign_up.php">アカウントを持っていない方はこちら</a>
+      </div>
       <p><?= !$result['status'] ? $result['errMsg']:"" ?></p>
     </form>
   </div>
