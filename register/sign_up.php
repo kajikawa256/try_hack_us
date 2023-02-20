@@ -7,6 +7,11 @@ $user = filter_input(INPUT_POST, "username");
 $password = filter_input(INPUT_POST, "password");
 $repeat = filter_input(INPUT_POST, "repeatPassword");
 
+// // 特殊文字処理
+// $user = htmlspecialchars((string)$user);
+// $password = htmlspecialchars((string)$password);
+// $repeat = htmlspecialchars((string)$repeat);
+
 // 送られてきた情報管理配列
 $result = [
   "status" => true,
@@ -34,6 +39,42 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if (empty($repeat)) {
     $result["status"] = false;
     $result["errMsg"] = $result["errMsg"] . "パスワードをもう一度入力してください<br>";
+  }
+
+  /*
+  文字数制限を超えていないか
+  */
+  if ($result["status"]) {
+    $count = 10;
+    if (mb_strlen($user) > $count) {
+      $result["status"] = false;
+      $result["errMsg"] = $result["errMsg"] . "ユーザー名は10文字以内にしてください<br>";
+    }
+    $count = 20;
+    if (mb_strlen($password) > $count) {
+      $result["status"] = false;
+      $result["errMsg"] = $result["errMsg"] . "パスワードは20文字以内にしてください<br>";
+    }
+  }
+
+  /*
+  特殊文字を使っているか
+  */
+  if (preg_match("/^[0-9a-zA-Z]*$/", $user) === 1) {
+    $result["status"] = false;
+    $result["errMsg"] = $result["errMsg"] . "記号は使えません<br>";
+  }
+  if (preg_match("/^[0-9a-zA-Z]*$/", $password) === 1) {
+    $result["status"] = false;
+    $result["errMsg"] = $result["errMsg"] . "記号は使えません<br>";
+  }
+
+  /*
+  パスワードとリピートが一致しているか
+  */
+  if ($password !== $repeat) {
+    $result["status"] = false;
+    $result["errMsg"] = $result["errMsg"] . "リピートパスワードが違います<br>";
   }
 
   /*
@@ -122,7 +163,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <title>サインアップ</title> <!-- 各ページのtitleを反映させる -->
   <meta name="description" content="新規登録"> <!-- 各ページのdescriptionを反映させる -->
   <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/sign_up.css">
+  <link rel="stylesheet" href="../css/register.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Babylonica&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
@@ -139,6 +180,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="password" name="repeatPassword" placeholder="repeatPassword" />
         <button>RESISTER</button>
       </form>
+      <p>半角英数字のみ</p>
     </div>
     <?= $result["errMsg"] ?>
   </div>
