@@ -6,7 +6,7 @@ require_once "../db/def.php";
 // セッションを使うことを宣言
 session_start();
 
-if(isset($_SESSION["id"])){
+if (isset($_SESSION["id"])) {
   unset($_SESSION["id"]);
 }
 
@@ -26,47 +26,47 @@ $result = [
 ];
 
 // 空白削除
-$username = trim((String)$username);
-$password = trim((String)$password);
+$username = trim((string)$username);
+$password = trim((string)$password);
 
-if(!empty($_POST)){
-  if($username == "" || $password == ""){
+if (!empty($_POST)) {
+  if ($username == "" || $password == "") {
     //ユーザー名またはパスワードが送信されて来なかった場合
     $result['errMsg'] = "ユーザー名かパスワードを入力してください";
     $result['status'] = false;
-  }else{
+  } else {
     //post送信されてきたユーザー名がデータベースにあるか検索
-    try{
+    try {
       //db初期設定
       $dbConnection = new dbConnection();
       $db = $dbConnection->connection();
 
-      $stmt = $db -> prepare('SELECT * FROM users WHERE username=?');
-      $stmt -> bindParam(1,$username,PDO::PARAM_STR, 10);
-      $stmt -> execute();
-      $dbresult = $stmt -> fetch(PDO::FETCH_ASSOC);
-    }
-    catch(PDOExeption $e){
+      $stmt = $db->prepare('SELECT * FROM users WHERE username=?');
+      $stmt->bindParam(1, $username, PDO::PARAM_STR, 10);
+      $stmt->execute();
+      $dbresult = $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
       exit('データベースエラー');
     }
     //検索したユーザー名に対してパスワードが正しいかを検証
-    if($dbresult){
+    if ($dbresult) {
       //正しくないとき
-      if(!password_verify($password,$dbresult['PASSWORD'])){
+      if (!password_verify($password, $dbresult['PASSWORD'])) {
         $result['errMsg'] = "ユーザー名かパスワードが違います<br>";
         $result['status'] = false;
       }
       //正しいとき
-      else{
+      else {
         session_regenerate_id(TRUE); //セッションidを再発行
-        $_SESSION["id"] = $dbresult["ID"];//セッションにログイン情報を登録
+        $_SESSION["id"] = $dbresult["ID"]; //セッションにログイン情報を登録
         $_SESSION["level"] = $dbresult["LEVEL"];
         $_SESSION["name"] = $dbresult["USERNAME"];
+        $_SESSION["judge"] = true;
 
-        header("Location: ../top/index.php");//ログイン後のページにリダイレクト
+        header("Location: ../top/index.php"); //ログイン後のページにリダイレクト
         exit();
       }
-    }else{
+    } else {
       $result['errMsg'] = "ユーザー名かパスワードが違います<br>";
       $result['status'] = false;
     }
@@ -92,19 +92,19 @@ if(!empty($_POST)){
 
 <body>
 
-<div class="login-page">
-  <div class="form">
-    <form action="../register/sign_in.php" method="POST">
-      <input type="text" name="username" placeholder="username" />
-      <input type="password" name="password" placeholder="password" />
-      <button>ログイン</button>
-      <div id="link_msg">
-        <a id="link" href="./sign_up.php">アカウントを持っていない方はこちら</a>
-      </div>
-      <p><?= !$result['status'] ? $result['errMsg']:"" ?></p>
-    </form>
+  <div class="login-page">
+    <div class="form">
+      <form action="../register/sign_in.php" method="POST">
+        <input type="text" name="username" placeholder="username" />
+        <input type="password" name="password" placeholder="password" />
+        <button>ログイン</button>
+        <div id="link_msg">
+          <a id="link" href="./sign_up.php">アカウントを持っていない方はこちら</a>
+        </div>
+        <p><?= !$result['status'] ? $result['errMsg'] : "" ?></p>
+      </form>
+    </div>
   </div>
-</div>
 
 
-<?php include("../_inc/footer.php"); ?> <!-- フッター共通部分 -->
+  <?php include("../_inc/footer.php"); ?> <!-- フッター共通部分 -->
