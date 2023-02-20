@@ -1,9 +1,9 @@
+<?php $title = "問題レベル3　突破!"; ?> <!-- headのtitleに反映させる -->
+<?php $description = "congratulation"; ?> <!-- headのdescriptionに反映させる -->
+<?php include("../_inc/header.php"); ?> <!-- ヘッダー共通部分 -->
 <?php
-$button = filter_input(INPUT_POST, "button");
-// $_SESSION[level]が2未満かつ場合問題レベル2にとばす
-session_start();
-if (!isset($button) || $_SESSION["level"] != 3) {
-        header("Location: ../question/ques_page_1.php");
+if ($_SESSION["judge"]) {
+        header("Location: ../question/ques_page_" .  $_SESSION["level"] . ".php");
 }
 
 // データベースの接続情報が書かれたファイルを読み込み
@@ -32,6 +32,9 @@ try {
 
         // コミット
         $db->commit();
+
+        $_SESSION["judge"] = true;
+        $_SESSION["level"] = 4;
 } catch (PDOException $e) {
         echo $e;
 } catch (Exception $e) {
@@ -42,9 +45,7 @@ try {
 }
 $_POST["button"] = "";
 ?>
-<?php $title = "問題レベル3　突破!"; ?> <!-- headのtitleに反映させる -->
-<?php $description = "congratulation"; ?> <!-- headのdescriptionに反映させる -->
-<?php include("../_inc/header.php"); ?> <!-- ヘッダー共通部分 -->
+
 <link rel="stylesheet" href="../css/question_page.css">
 
 <div class="contents">

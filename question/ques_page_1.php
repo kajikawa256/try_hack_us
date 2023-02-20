@@ -1,7 +1,14 @@
+<?php $title = "問題レベル1"; ?> <!-- headのtitleに反映させる -->
+<?php $description = "Let's hack"; ?> <!-- headのdescriptionに反映させる -->
+<?php include("../_inc/header.php"); ?> <!-- ヘッダー共通部分 -->
 <?php
 
 // データベースの接続情報が書かれているファイルを読み込み
 require_once "../db/def.php";
+// $_SESSION[level]が2未満だった場合問題レベル1にとばす
+if ($_SESSION["level"] != 1) {
+        header("Location: ../question/ques_page_" .  $_SESSION["level"] . ".php");
+}
 
 //変数宣言
 $id = filter_input(INPUT_POST, "id");
@@ -38,6 +45,7 @@ if (isset($flag)) {
 
                 if ($result) {
                         //ユーザが存在するなら
+                        $_SESSION["judge"] = false;
                         header("Location: ../answer/ans_page_1.php");
                         exit();
                 } else {
@@ -52,16 +60,13 @@ if (isset($flag)) {
 
 ?>
 
-
-<?php $title = "問題レベル1"; ?> <!-- headのtitleに反映させる -->
-<?php $description = "Let's hack"; ?> <!-- headのdescriptionに反映させる -->
-<?php include("../_inc/header.php"); ?> <!-- ヘッダー共通部分 -->
 <link rel="stylesheet" href="../css/question_page.css">
 <link rel="stylesheet" href="../css/font.css">
 
 <div class="contents">
         <!-- コンテンツ部分 -->
         <h2>認証を突破してください。（Lv1）</h2>
+        <?= var_dump($_SESSION) ?>
 
         <form action="./ques_page_1.php" method="POST">
 

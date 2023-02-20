@@ -1,12 +1,14 @@
+<?php $title = "問題レベル2"; ?> <!-- headのtitleに反映させる -->
+<?php $description = "Please hack me XD"; ?> <!-- headのdescriptionに反映させる -->
+<?php include("../_inc/header.php"); ?> <!-- ヘッダー共通部分 -->
 <?php
 
-// レベルが2より小さい場合一つ前のレベルに遷移
-$button = filter_input(INPUT_POST, "button");
-session_start();
 // $_SESSION[level]が2未満だった場合問題レベル1にとばす
-if (!isset($button) || $_SESSION["level"] != 2) {
-        header("Location: ../question/ques_page_1.php");
+if ($_SESSION["level"] != 2) {
+        header("Location: ../question/ques_page_" .  $_SESSION["level"] . ".php");
 }
+
+require_once "../db/def.php";
 
 //変数宣言
 $id = filter_input(INPUT_POST, "id");
@@ -45,6 +47,7 @@ if (isset($flag)) {
 
                 if ($result) {
                         //ユーザが存在するなら
+                        $_SESSION["judge"] = false;
                         header("Location: ../answer/ans_page_2.php");
                         exit();
                 } else {
@@ -65,14 +68,15 @@ $stmt = null;
 
 
 
-<?php $title = "問題レベル2"; ?> <!-- headのtitleに反映させる -->
-<?php $description = "Please hack me XD"; ?> <!-- headのdescriptionに反映させる -->
-<?php include("../_inc/header.php"); ?> <!-- ヘッダー共通部分 -->
+
+
 <link rel="stylesheet" href="../css/question_page.css">
 
 <div class="contents">
         <!-- コンテンツ部分 -->
         <h2>認証を突破してください。（Lv2）</h2>
+
+        <?= var_dump($_SESSION) ?>
 
         <form action="./ques_page_2.php" method="POST">
 
@@ -97,7 +101,7 @@ $stmt = null;
 
                 <div class="contents_elemnt" id="rogin_button">
                         <form action="../answer//ans_page_2.php" method="POST">
-                                <input type="submit" name="button" value="ログイン">
+                                <input type="submit" name="button" value="ログインlevel2">
                         </form>
                 </div>
         </form>
