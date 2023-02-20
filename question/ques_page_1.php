@@ -66,7 +66,6 @@ if (isset($flag)) {
 <div class="contents">
         <!-- コンテンツ部分 -->
         <h2>認証を突破してください。（Lv1）</h2>
-        <?= var_dump($_SESSION) ?>
 
         <form action="./ques_page_1.php" method="POST">
 
