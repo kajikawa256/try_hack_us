@@ -1,5 +1,5 @@
 <?php
-
+// データベースの接続情報が書かれているファイルを読み込み
 require_once "../db/def.php";
 
 // 送られてきた値を受け取り
@@ -50,10 +50,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $result["status"] = false;
       $result["errMsg"] = $result["errMsg"] . "ユーザー名は10文字以内にしてください<br>";
     }
-    $count = 20;
-    if (mb_strlen($password) > $count) {
+    $maxcount = 20;
+    $mincount = 8;
+    if (mb_strlen($password) > $maxcount || mb_strlen($password) < $mincount) {
       $result["status"] = false;
-      $result["errMsg"] = $result["errMsg"] . "パスワードは20文字以内にしてください<br>";
+      $result["errMsg"] = $result["errMsg"] . "パスワードは8文字以上20文字以内にしてください<br>";
     }
   }
 
@@ -62,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   */
   if (!preg_match("/^[0-9a-zA-Z]*$/", $user)) {
     $result["status"] = false;
-    $result["errMsg"] = $result["errMsg"] . "記号は使えません<br>";
+    $result["errMsg"] = $result["errMsg"] . "ユーザネームは半角英数字のみ使えます<br>";
   }
   if (!preg_match("/^[0-9a-zA-Z]*$/", $password)) {
     $result["status"] = false;
@@ -143,8 +144,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       // コミット
       $db->commit();
 
-      // indexに遷移
-      header("Location: ./sign_in.php");
     } catch (PDOException $e) {
       echo $e;
     } finally {
@@ -152,6 +151,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $db = null;
     }
   }
+
+  if($result["status"]){
+    try {
+      $dbConnection = new dbConnection();
+      $db = $dbConnection->connection();
+
+      // SQL文を設定
+      $sql = "SELECT * FROM users WHERE username = '$user'";
+
+      // stmtにsql文をセット
+      $stmt = $db->prepare($sql);
+
+      // 実行
+      $stmt->execute();
+
+      //値を取得
+      $dbresult = $stmt -> fetch(PDO::FETCH_ASSOC);
+
+      // indexに遷移
+      session_start();
+      // session_regenerate_id(TRUE); //セッションidを再発行
+      $_SESSION["id"] = $dbresult["ID"];//セッションにログイン情報を登録
+      $_SESSION["level"] = $dbresult["LEVEL"];
+      $_SESSION["name"] = $dbresult["USERNAME"];
+      header("Location: ../top/index.php");
+    } catch (PDOException $e) {
+      echo $e;
+    } finally {
+      $stmt = null;
+      $db = null;
+    }
+  }
+
 }
 
 ?>
@@ -175,17 +207,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <div class="login-page">
     <div class="form">
       <form class="login-form" action="./sign_up.php" method="POST">
-        <input type="text" name="username" placeholder="username" />
-        <input type="password" name="password" placeholder="password" />
-        <input type="password" name="repeatPassword" placeholder="repeatPassword" />
-        <button>RESISTER</button>
+        <input type="text" name="username" placeholder="ユーザネーム" value="<?= !$result['status'] ? $user:"" ?>" />
+        <input type="password" name="password" placeholder="パスワード" />
+        <input type="password" name="repeatPassword" placeholder="パスワード（確認）" />
+        <button>新規登録</button>
       </form>
-      <p>半角英数字のみ</p>
+      <p><?= $result["errMsg"] ?></p>
     </div>
-    <?= $result["errMsg"] ?>
   </div>
-
-</body>
 
 <?php include("../_inc/footer.php"); ?> <!-- フッター共通部分 -->
 

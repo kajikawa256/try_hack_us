@@ -1,5 +1,14 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
+#link{
+  font-size: small;
+}
+
+#link_msg{
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
 .login-page {
   width: 360px;
   padding: 8% 0 0;
