@@ -21,88 +21,50 @@ $result = [
   "errMsg" => "",
 ];
 
-
-if($username == "" || $password == ""){
-  $result['errMsg'] = "ユーザー名またはパスワードを入力してください";
-  $result["status"] = false;
-  // var_dump($result);
-}
-
 // 空白削除
 $username = trim((String)$username);
 $password = trim((String)$password);
 
-
-
-//ユーザー名またはパスワードが送信されて来なかった場合
-if(empty($username) || empty($password)){
-  $result["errMsg"] = "ユーザー名かパスワードが違います";
-}
- //ユーザー名とパスワードが送信されたとき
- else{
-  //post送信されてきたユーザー名がデータベースにあるか検索
-  try{
-    $stmt = $db -> prepare('SELECT * FROM users WHERE username=?');
-    $stmt -> bindParam(1,$username,PDO::PARAM_STR, 10);
-    $stmt -> execute();
-    $result = $stmt -> fetch(PDO::FETCH_ASSOC);
-  }
-  catch(PDOExeption $e){
-    exit('データベースエラー');
-  }
-
-  //検索したユーザー名に対してパスワードが正しいかを検証
-  //正しくないとき
-  if(!password_verify($username,$result['password'])){
-    $result['errMsg'] =$result['errMsg'] + "ユーザー名かパスワードが違います<br>";
+if(!empty($_POST)){
+  if($username == "" || $password == ""){
+    //ユーザー名またはパスワードが送信されて来なかった場合
+    $result['errMsg'] = "ユーザー名かパスワードを入力してください";
     $result['status'] = false;
+  }else{
+    //post送信されてきたユーザー名がデータベースにあるか検索
+    try{
+      //db初期設定
+      $dbConnection = new dbConnection();
+      $db = $dbConnection->connection();
+
+      $stmt = $db -> prepare('SELECT * FROM users WHERE username=?');
+      $stmt -> bindParam(1,$username,PDO::PARAM_STR, 10);
+      $stmt -> execute();
+      $dbresult = $stmt -> fetch(PDO::FETCH_ASSOC);
+      var_dump($dbresult);
+    }
+    catch(PDOExeption $e){
+      exit('データベースエラー');
+    }
+    //検索したユーザー名に対してパスワードが正しいかを検証
+    if($dbresult){
+      //正しくないとき
+      if(!password_verify($password,$dbresult['PASSWORD'])){
+        $result['errMsg'] = "ユーザー名かパスワードが違います<br>";
+        $result['status'] = false;
+      }
+      //正しいとき
+      else{
+        session_regenerate_id(TRUE); //セッションidを再発行
+        $_SESSION["login"] = $dbresult["ID"];//セッションにログイン情報を登録
+        header("Location: ../top/index.php");//ログイン後のページにリダイレクト
+        exit();
+      }
+    }else{
+      $result['errMsg'] = "ユーザー名かパスワードが違います<br>";
+      $result['status'] = false;
+    }
   }
-  //正しいとき
-  else{
-    session_regenerate_id(TRUE); //セッションidを再発行
-    $_SESSION["login"] = $username;//セッションにログイン情報を登録
-    header("Location: ../top/index.php");//ログイン後のページにリダイレクト
-    exit();
-  }
-}
-
-
-
-
-
-
-// // 存在チェック(username)
-// if(!(isset($username))){
-//   $result["status"] = false;
-//   $result["errMsg"] = "ユーザー名を入力してください";
-// }
-
-// // 存在チェック(password)
-// if(!(isset($password))){
-//   $result["status"] = false;
-//   $result["errMsg"] = "パスワードを入力してください";
-// }
-
-// 文字数判定
-if(strlen($username) > 10 || strlen($password) > 50){
-  $result["status"] = false;
-  $result["errMsg"] = "文字数が超過しています";
-}
-
-// usernameとpasswordが送られてきていた場合のみ
-if ($result["status"]) {
-  try {
-    // データベースに接続
-    $dbConnection = new dbConnection();
-    $db = $dbConnection->connection();
-  } catch (PDOException $e) {
-    echo $e;
-  } finally {
-    // nullにして接続を終了
-    $db = null;
-  }
-}else{
-  echo $result["errMsg"];
 }
 
 ?>
@@ -120,6 +82,7 @@ if ($result["status"]) {
       <input type="text" name="username" placeholder="username" />
       <input type="password" name="password" placeholder="password" />
       <button>LOGIN</button>
+      <p><?= !$result['status'] ? $result['errMsg']:"" ?></p>
     </form>
   </div>
 </div>
