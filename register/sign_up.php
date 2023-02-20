@@ -143,7 +143,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
       // コミット
       $db->commit();
-
     } catch (PDOException $e) {
       echo $e;
     } finally {
@@ -152,7 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
   }
 
-  if($result["status"]){
+  if ($result["status"]) {
     try {
       $dbConnection = new dbConnection();
       $db = $dbConnection->connection();
@@ -167,14 +166,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $stmt->execute();
 
       //値を取得
-      $dbresult = $stmt -> fetch(PDO::FETCH_ASSOC);
+      $dbresult = $stmt->fetch(PDO::FETCH_ASSOC);
 
       // indexに遷移
       session_start();
       // session_regenerate_id(TRUE); //セッションidを再発行
-      $_SESSION["id"] = $dbresult["ID"];//セッションにログイン情報を登録
+      $_SESSION["id"] = $dbresult["ID"]; //セッションにログイン情報を登録
       $_SESSION["level"] = $dbresult["LEVEL"];
       $_SESSION["name"] = $dbresult["USERNAME"];
+      $_SESSION["judge"] = true;
       header("Location: ../top/index.php");
     } catch (PDOException $e) {
       echo $e;
@@ -183,7 +183,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $db = null;
     }
   }
-
 }
 
 ?>
@@ -207,7 +206,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <div class="login-page">
     <div class="form">
       <form class="login-form" action="./sign_up.php" method="POST">
-        <input type="text" name="username" placeholder="ユーザネーム" value="<?= !$result['status'] ? $user:"" ?>" />
+        <input type="text" name="username" placeholder="ユーザネーム" value="<?= !$result['status'] ? $user : "" ?>" />
         <input type="password" name="password" placeholder="パスワード" />
         <input type="password" name="repeatPassword" placeholder="パスワード（確認）" />
         <button>新規登録</button>
@@ -216,6 +215,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
   </div>
 
-<?php include("../_inc/footer.php"); ?> <!-- フッター共通部分 -->
+  <?php include("../_inc/footer.php"); ?> <!-- フッター共通部分 -->
 
 </html>
