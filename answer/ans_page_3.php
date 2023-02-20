@@ -1,22 +1,66 @@
-<?php $title = "問題レベル3　突破!";?> <!-- headのtitleに反映させる -->
-<?php $description = "congratulation";?> <!-- headのdescriptionに反映させる -->
-<?php include("../_inc/header.php"); ?>  <!-- ヘッダー共通部分 -->
+<?php
+$button = filter_input(INPUT_POST, "button");
+// $_SESSION[level]が2未満かつ場合問題レベル2にとばす
+session_start();
+if (!isset($button) || $_SESSION["level"] != 3) {
+        header("Location: ../question/ques_page_1.php");
+}
+
+// データベースの接続情報が書かれたファイルを読み込み
+require_once "../db/def.php";
+// dbのlevelカラムを更新する
+try {
+        $dbConnection = new dbConnection();
+        $db = $dbConnection->connection();
+
+        // SQL文を設定
+        $sql = "UPDATE users
+                set level = 4
+                where id = :id";
+
+        // stmtにsql文をセット
+        $stmt = $db->prepare($sql);;
+
+        // バインドパラムし値を設定
+        $stmt->bindParam(':id', $_SESSION["id"], PDO::PARAM_STR);
+
+        // トランザクション開始
+        $db->beginTransaction();
+
+        // 実行
+        $stmt->execute();
+
+        // コミット
+        $db->commit();
+} catch (PDOException $e) {
+        echo $e;
+} catch (Exception $e) {
+        echo $e;
+} finally {
+        $db = null;
+        $stmt = null;
+}
+$_POST["button"] = "";
+?>
+<?php $title = "問題レベル3　突破!"; ?> <!-- headのtitleに反映させる -->
+<?php $description = "congratulation"; ?> <!-- headのdescriptionに反映させる -->
+<?php include("../_inc/header.php"); ?> <!-- ヘッダー共通部分 -->
 <link rel="stylesheet" href="../css/question_page.css">
 
-        <div class="contents">
-                <!-- コンテンツ部分 -->
-                <h2>Congratulation!</h2>
-                <h3>あなたのスコア：１００００</h3>
-                <div id="sentence">
-                        <p>You logging in : Anonymous</p>
-                        <br>
-                        <p id="next_message">これであなたもアノニマスの一員です！<br>外部からのパラメータでウェブサーバ内のファイル名を直接指定する実装を避けましょう。</p>
-                </div>
-                <div id="next_button">
-                        <form action="../question/ques_page_3.php">
-                                <button><a href="../ranking/ranking.php" id="button_text">ランキング画面へ行く</a></button>
-                        </form>
-                </div>
+<div class="contents">
+        <!-- コンテンツ部分 -->
+        <h2>Congratulation!</h2>
+        <h3>あなたのスコア：１００００</h3>
+        <div id="sentence">
+                <p>You logging in : Anonymous</p>
+                <br>
+                <p id="next_message">これであなたもアノニマスの一員です！<br>外部からのパラメータでウェブサーバ内のファイル名を直接指定する実装を避けましょう。</p>
         </div>
+        <div id="next_button">
+                <form action="../question/ques_page_3.php">
+                        <button><a href="../ranking/ranking.php" id="button_text">ランキング画面へ行く</a></button>
+                </form>
+        </div>
+</div>
 
 <?php include("../_inc/footer.php"); ?> <!-- フッター共通部分 -->
