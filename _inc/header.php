@@ -1,12 +1,13 @@
 <?php
 
-//セッションを使うことを宣言
-// session_start();
+// セッションを使うことを宣言
 
-//ログイン状態出ない場合sign_in.phpページにリダイレクト
-// if(!isset($_SESSION["login"])){
-//    header("Location: ../register/sign_in.php");
-// }
+session_start();
+
+// ログイン状態出ない場合sign_in.phpページにリダイレクト
+if(!isset($_SESSION["id"])){
+   header("Location: ../register/sign_in.php");
+}
 
 
 
@@ -40,6 +41,7 @@
                   <li><a href = "../ranking/ranking.php" title = "ランキング">何じゃ</a></li>
                   <li><a href = "" title = "参考書">何用</a></li>
                   <li><a href = "" title = "なんか">何様</a></li>
+                  <li><a href = "../register/sign_in.php" title = "ログアウト">何事</a></li>
                </ul>
             </div>
          </div>

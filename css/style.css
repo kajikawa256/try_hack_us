@@ -17,7 +17,7 @@
  }
 
  .contents {
-   width: 1200px;
+   width: 1000px;
    height: auto;
    margin-right: auto;
    margin-left: auto;
@@ -27,5 +27,6 @@
    padding-top: 30px;
    font-size: 1.5em;
    background-color: white;
+   background-image: url();
  }
 
