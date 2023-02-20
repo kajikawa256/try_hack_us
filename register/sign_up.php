@@ -60,11 +60,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   /*
   特殊文字を使っているか
   */
-  if (preg_match("/^[0-9a-zA-Z]*$/", $user) === 1) {
+  if (!preg_match("/^[0-9a-zA-Z]*$/", $user)) {
     $result["status"] = false;
     $result["errMsg"] = $result["errMsg"] . "記号は使えません<br>";
   }
-  if (preg_match("/^[0-9a-zA-Z]*$/", $password) === 1) {
+  if (!preg_match("/^[0-9a-zA-Z]*$/", $password)) {
     $result["status"] = false;
     $result["errMsg"] = $result["errMsg"] . "記号は使えません<br>";
   }
