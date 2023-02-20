@@ -55,7 +55,6 @@ $_POST["button"] = "";
 <div class="contents">
         <!-- コンテンツ部分 -->
         <h2>Congratulation!</h2>
-        <?= var_dump($_SESSION) ?>
         <div id="sentence">
                 <p>You logging in : admin</p>
                 <br>

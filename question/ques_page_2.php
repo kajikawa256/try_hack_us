@@ -76,7 +76,6 @@ $stmt = null;
         <!-- コンテンツ部分 -->
         <h2>認証を突破してください。（Lv2）</h2>
 
-        <?= var_dump($_SESSION) ?>
 
         <form action="./ques_page_2.php" method="POST">
 
@@ -101,7 +100,7 @@ $stmt = null;
 
                 <div class="contents_elemnt" id="rogin_button">
                         <form action="../answer//ans_page_2.php" method="POST">
-                                <input type="submit" name="button" value="ログインlevel2">
+                                <input type="submit" name="button" value="ログイン">
                         </form>
                 </div>
         </form>
