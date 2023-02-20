@@ -40,6 +40,7 @@
                   <li><a href = "../ranking/ranking.php" title = "ランキング">何じゃ</a></li>
                   <li><a href = "" title = "参考書">何用</a></li>
                   <li><a href = "" title = "なんか">何様</a></li>
+                  <li><a href = "../register/sign_in.php" title = "ログアウト">何事</a></li>
                </ul>
             </div>
          </div>

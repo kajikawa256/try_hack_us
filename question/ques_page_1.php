@@ -3,12 +3,7 @@
 // データベースの接続情報が書かれているファイルを読み込み
 require_once "../db/def.php";
 
-# ログインしていない人はログインページへ飛ばす
-// session_start();
-// if(!isset($_SESSION["USER_ID"])){
-//         header("Location: ../register/sign_in.php");
-// }
-
+//変数宣言
 $id = filter_input(INPUT_POST,"id");
 $pass = filter_input(INPUT_POST,"password");
 $flag = filter_input(INPUT_POST,"button");
@@ -24,18 +19,7 @@ if(isset($flag)){
                 //idとpassが入力されていた場合
                 //db接続処理
                 try {
-                        // // データソース名を設定
-                        // $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET;
-                        // // $dbにPDOのインスタンス生成
-                        // $db = new PDO($dsn, DB_USER, DB_PASS);
-                
-                        // //　PODの動作オプションを指定
-                        // $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);                 // ステートメントのエミュレーションをオフ
-                        // $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);         // エラーを表示する
-                        // $db->setAttribute(PDO::ATTR_ORACLE_NULLS, PDO::NULL_EMPTY_STRING);    // 空文字をnullに変換
-                        // $db->setAttribute(PDO::ATTR_CASE, PDO::CASE_UPPER);                   // 小文字を大文字に変換
-                        // $db->setAttribute(PDO::ATTR_AUTOCOMMIT, false);                       // autocommitをオフ
-
+                       
                         $dbConnection = new dbConnection();
                         $db = $dbConnection->connection();
 
@@ -90,7 +74,7 @@ if(isset($flag)){
 
 <!--   
 ログイン情報
-ユーザID：a　パスワード：level1
+ユーザID：admin　パスワード：abc12345
 -->
 
                         <div class="contents_elemnt">

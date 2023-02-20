@@ -8,20 +8,25 @@
  }
 
  body {
+  font-family: 'Playfair Display', serif;
    background: #76b852;
    /* fallback for old browsers */
    background: rgb(141, 194, 111);
    background: linear-gradient(90deg, rgba(141, 194, 111, 1) 0%, rgba(118, 184, 82, 1) 50%);
+   text-align: center;
  }
 
  .contents {
-   text-align: center;
-   margin-left: 20%;
-   margin-right: 20%;
+   width: 1000px;
+   height: auto;
+   margin-right: auto;
+   margin-left: auto;
    margin-top: 40px;
+   margin-bottom: 200px;
+   padding-bottom: 100px;
    padding-top: 30px;
    font-size: 1.5em;
    background-color: white;
-   height: 400px;
+   background-image: url();
  }
 
