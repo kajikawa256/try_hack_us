@@ -13,7 +13,7 @@ try {
   $db = $dbConnection->connection();
 
   // SQL文を作成
-  $sql = "SELECT username,score
+  $sql = "SELECT username,level,score
         FROM users;";
 
   // stmtにsql文をセット
@@ -35,9 +35,32 @@ try {
 }
 ?>
 
+<link href="../css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="../css/ranking.css"> <!-- css読み込み -->
+
 <!-- ▼content▼ -->
 <div class="content">
-  <h1>ランキングページ</h1>
+
+  <div class="box11">
+  <h2>ランキングページ</h2>
+        <table class="table table-hover mt-5 form-control-lg">
+            <thead class="table-light text-secondary">
+              <tr>
+                <th>ユーザネーム</th>
+                <th>レベル</th>
+                <th>スコア</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php foreach($result as $recode => $culum):$count=0?>
+                <tr>
+                  <?php foreach($culum as $data): ?>
+                    <td> <?= $data;if($count == 0){$num = $data;}$count++; ?> </td>
+                  <?php endforeach ?>
+                </tr>
+              <?php endforeach ?>
+            </tbody>
+        </table>
+
 </div>
 <!-- ▲content▲ -->
