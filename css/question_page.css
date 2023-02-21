@@ -1,8 +1,8 @@
 body{
-  background-image: url(../img/ques_page_background.jpg);
+  /* background-image: url(../img/ques_page_background.jpg);
   background-repeat: no-repeat;
   background-position-x: center;
-  background-size: 1500px;
+  background-size: 1500px; */
 }
 
 h2{
@@ -15,7 +15,6 @@ h3{
 }
 
 .contents{
-  font-family: "sans-serif","メイリオ";
   width: 900px;
   background-color: rgba(253, 251, 251, 0.934);
   padding-bottom: 50px;
