@@ -86,6 +86,7 @@ $stmt = null;
 <div class="contents">
         <!-- コンテンツ部分 -->
         <h2>認証を突破してください。（Lv3）</h2>
+        <p id="timer">残り<span id="Min">10</span>分<span id="Sec">00</span>秒</p>
 
         <form action="./login.php?page=ques_page_3.php" method="POST">
 

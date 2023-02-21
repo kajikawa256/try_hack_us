@@ -73,9 +73,9 @@ if (isset($flag)) {
 <div class="contents">
         <!-- コンテンツ部分 -->
         <h2>認証を突破してください。（Lv1）</h2>
+        <p id="timer">残り<span id="Min">10</span>分<span id="Sec">00</span>秒</p>
 
         <form action="./ques_page_1.php" method="POST">
-
                 <p id="err_message"> <?php if ($err_msg2 != "") {
                                                 echo $err_msg2;
                                         } else {
@@ -102,5 +102,6 @@ if (isset($flag)) {
                 </div>
         </form>
 </div>
+
 
 <?php include("../_inc/footer.php"); ?> <!-- フッター共通部分 -->
