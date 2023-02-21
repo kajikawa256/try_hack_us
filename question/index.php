@@ -1,3 +1,34 @@
+<?php
+
+// データベースの接続情報が書かれているファイルを読み込み
+require_once "../db/def.php";
+
+try {
+  // DB接続をインスタンス化
+  $dbConnection = new dbConnection();
+  $db = $dbConnection->connection();
+
+  // SQL文を作成
+  $sql = "SELECT score
+        FROM users";
+
+  // stmtにsql文をセット
+  $stmt = $db->prepare($sql);
+
+  // 実行
+  $stmt->execute();
+
+  // 実行結果を取得
+   $result = $stmt->fetch(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+  echo $e;
+} finally {
+  $db = null;
+  $stmt = null;
+}
+
+?>
+
 <?php $title = "クイズTOPページ"; ?> <!-- headのtitleに反映させる -->
 <?php $description = "top page"; ?> <!-- headのdescriptionに反映させる -->
 <?php include("../_inc/header.php"); ?> <!-- ヘッダー共通部分 -->
@@ -8,6 +39,7 @@
         <!-- コンテンツ部分 -->
         <h2>Try Hack Us ページへようこそ</h2>
         <h3><?= "{$_SESSION['name']}さんの現在のレベル：{$_SESSION['level']}"; ?></h3>
+        <h3><?= "{$_SESSION['name']}さんの現在の得点：{$result['SCORE']}"; ?></h3>
         <div class="box22">
           <div class="description" >
             <p>
