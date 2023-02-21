@@ -7,18 +7,65 @@ body{
 
 h2{
   font-size: 2em;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+}
+
+h3{
+  margin-bottom: 20px;
 }
 
 .contents{
   font-family: "sans-serif","メイリオ";
   width: 900px;
   background-color: rgba(253, 251, 251, 0.934);
+  padding-bottom: 50px;
 }
 
 .contents_elemnt{
   margin-top: 3px;
 }
+
+/* 001 */
+
+.button001{
+  margin-top: 50px;
+}
+.button001 a {
+  text-decoration: none;
+  background: #5bb7ae;
+  border-radius: 3px;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 280px;
+  padding: 10px 25px;
+  color: #FFF;
+  transition: 0.3s ease-in-out;
+  font-weight: 500;
+}
+.button001 a:hover {
+  background: #313131;
+  color: #FFF;
+}
+.button001 a:after {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-top: 3px solid #FFF;
+  border-right: 3px solid #FFF;
+  transform: rotate(45deg) translateY(-50%);
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  border-radius: 1px;
+  transition: 0.3s ease-in-out;
+}
+.button001 a:hover:after {
+  border-color: #FFF;
+}
+
 
 .box22{
   padding: 0.5em 1em;
@@ -64,7 +111,7 @@ h2{
 }
 
 #sentence{
-  margin-top: 80px;
+  margin-top: 50px;
 }
 
 #sentence p{

@@ -7,7 +7,7 @@
 <div class="contents">
         <!-- コンテンツ部分 -->
         <h2>Try Hack Us ページへようこそ</h2>
-
+        <h3><?= "{$_SESSION['name']}さんの現在のレベル：{$_SESSION['level']}"; ?></h3>
         <div class="box22">
           <div class="description" >
             <p>
@@ -19,6 +19,9 @@
             </p>
           </div>
         </div>
-</div>
+        <div class="button001">
+        <a href="./ques_page_1.php"><?= $_SESSION["level"] != 1 ? "続きから":"問題へ" ?></a>
+      </div>
+    </div>
 
 <?php include("../_inc/footer.php"); ?> <!-- フッター共通部分 -->
