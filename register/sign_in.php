@@ -97,7 +97,7 @@ if (!empty($_POST)) {
       <form action="../register/sign_in.php" method="POST">
         <input type="text" name="username" placeholder="username" />
         <input type="password" name="password" placeholder="password" />
-        <button>ログイン</button>
+        <button>LOGIN</button>
         <div id="link_msg">
           <a id="link" href="./sign_up.php">アカウントを持っていない方はこちら</a>
         </div>
