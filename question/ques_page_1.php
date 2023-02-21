@@ -30,11 +30,18 @@ if (isset($flag)) {
                         $dbConnection = new dbConnection();
                         $db = $dbConnection->connection();
 
-                        // 脆弱性のあるSQL文
-                        $stmt = $db->query("SELECT * FROM dummytable WHERE level = 1 and username='$id' and password='$pass'");
+                        //SQL文（プレースホルダ使用）
+                        $stmt = $db->prepare("SELECT * FROM dummytable WHERE level = 1 and username = ? and password = ?");
+                        $stmt->bindParam(1, $id, PDO::PARAM_STR);
+                        $stmt->bindParam(2, $pass, PDO::PARAM_STR);
+
+                        //実行
                         $stmt->execute();
+
+                        //結果取得
                         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-                } catch (PDOException $e) {
+
+                } catch (PDOException $poe) {
                         echo $poe;
                 } catch (Exception $poe) {
                         $err_msg2 = $poe;

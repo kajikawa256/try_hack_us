@@ -19,7 +19,7 @@ if ($_SESSION["judge"]) {
                         where id = :id";
 
                 // stmtにsql文をセット
-                $stmt = $db->prepare($sql);;
+                $stmt = $db->prepare($sql);
 
                 // バインドパラムし値を設定
                 $stmt->bindParam(':id', $_SESSION["id"], PDO::PARAM_STR);
@@ -52,7 +52,6 @@ $_POST["button"] = "";
 <div class="contents">
         <!-- コンテンツ部分 -->
         <h2>Congratulation!</h2>
-        <h3>あなたのスコア：１００００</h3>
         <div id="sentence">
                 <p>You logging in : Anonymous</p>
                 <br>
@@ -60,7 +59,7 @@ $_POST["button"] = "";
         </div>
         <div id="next_button">
                 <form action="../question/ques_page_3.php">
-                        <button><a href="../ranking/ranking.php" id="button_text">ランキング画面へ行く</a></button>
+                        <button><a href="../question/ques_page_4.php" id="button_text">次へ</a></button>
                 </form>
         </div>
 </div>
