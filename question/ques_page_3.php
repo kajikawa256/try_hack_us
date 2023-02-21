@@ -49,7 +49,7 @@ if (isset($flag2)) {
                         //クエリを実行
                         $stmt->execute();
                         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-                } catch (PDOException $e) {
+                } catch (PDOException $poe) {
                         echo $poe;
                 } catch (Exception $poe) {
                         $err_msg2 = $poe;

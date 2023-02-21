@@ -9,6 +9,12 @@
   height: 400px;
 }
 
+.contents{
+  width: 900px;
+  background-color: rgba(253, 251, 251, 0.934);
+  padding-bottom: 50px;
+}
+
 .ranking_list{
   width: 1200px;
   text-align: center;
@@ -20,20 +26,62 @@ h2{
   margin-top: 30px;
   margin-bottom: 30px;
   text-align: center;
+  font-size: 2em;
+}
+
+table{
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+table tr{
+  border-bottom: solid 1px #eee;
+  cursor: pointer;
+}
+
+table #table_contents:hover{
+  background-color: #d4f0fd;
+}
+
+table th,table td{
+  text-align: center;
+  width: 25%;
+  padding: 15px 0;
+}
+
+table td.icon{
+  background-size: 35px;
+  background-position: left 5px center;
+  background-repeat: no-repeat;
+  padding-left: 30px;
+}
+
+table td.icon.bird{
+  background-image: url(icon-bird.png)
+}
+
+table td.icon.whale{
+  background-image: url(icon-whale.png)
+}
+
+table td.icon.crab{
+  background-image: url(icon-crab.png)
 }
 
 .box11{
-  width: 1200px;
   padding: 0.5em 1em;
+  margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  color: #5d627b;
-  background: white;
-  border-top: solid 5px #5d627b;
+  width: 900px;
+  background-color: rgba(253, 251, 251, 0.934);
+  padding-bottom: 50px;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 }
 .box11 p {
   margin: 0;
   padding: 0;
 }
+
