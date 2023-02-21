@@ -33,6 +33,27 @@ if ($_SESSION["judge"]) {
                 // コミット
                 $db->commit();
 
+                //スコア処理
+                // SQL文を設定
+                $sql = "UPDATE users
+                set score = score + 5000
+                where id = :id";
+
+                // stmtにsql文をセット
+                $stmt = $db->prepare($sql);
+
+                // バインドパラムし値を設定
+                $stmt->bindParam(':id', $_SESSION["id"], PDO::PARAM_STR);
+
+                // トランザクション開始
+                $db->beginTransaction();
+
+                // 実行
+                $stmt->execute();
+
+                // コミット
+                $db->commit();
+
                 $_SESSION["judge"] = true;
                 $_SESSION["level"] = 4;
         } catch (PDOException $e) {
