@@ -38,6 +38,7 @@ try {
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="../css/ranking.css"> <!-- css読み込み -->
 
+
 <!-- ▼content▼ -->
 <div class="content">
 
