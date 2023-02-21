@@ -8,11 +8,15 @@
  }
 
  body {
-  font-family: 'Playfair Display', serif;
-   background: #76b852;
-   /* fallback for old browsers */
+   font-family: "sans-serif","メイリオ";
+   /* background: #76b852;
+   fallback for old browsers;
    background: rgb(141, 194, 111);
-   background: linear-gradient(90deg, rgba(141, 194, 111, 1) 0%, rgba(118, 184, 82, 1) 50%);
+   background: linear-gradient(90deg, rgba(141, 194, 111, 1) 0%, rgba(118, 184, 82, 1) 50%); */
+   background-image: url(../img/ques_page_background.jpg);
+   /* background-repeat: no-repeat; */
+   background-position-x: center;
+   background-size: 1500px;
    text-align: center;
  }
 

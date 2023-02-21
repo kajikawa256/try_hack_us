@@ -9,8 +9,6 @@ if(!isset($_SESSION["id"])){
    header("Location: ../register/sign_in.php");
 }
 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -37,11 +35,10 @@ if(!isset($_SESSION["id"])){
             <div class = "HeaderMenu">
                <h1><a href = "../top/index.php" title = "ホームページへ">Try Hack Us!</a></h1>
                <ul>
-                  <li><a href = "../question/index.php" title = "クイズ">何やつ</a></li>
-                  <li><a href = "../ranking/ranking.php" title = "ランキング">何じゃ</a></li>
-                  <li><a href = "" title = "参考書">何用</a></li>
-                  <li><a href = "" title = "なんか">何様</a></li>
-                  <li><a href = "../register/sign_in.php" title = "ログアウト">何事</a></li>
+                  <li><a href = "../question/index.php" title = "クイズ">クイズ</a></li>
+                  <li><a href = "../ranking/ranking.php" title = "ランキング">ランキング</a></li>
+                  <li><a href = "" title = "参考書">参考書</a></li>
+                  <li><a href = "../register/sign_in.php" title = "ログアウト">ログアウト</a></li>
                </ul>
             </div>
          </div>

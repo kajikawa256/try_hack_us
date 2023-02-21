@@ -14,7 +14,7 @@ try {
 
   // SQL文を作成
   $sql = "SELECT username,level,score
-        FROM users;";
+        FROM users";
 
   // stmtにsql文をセット
   $stmt = $db->prepare($sql);

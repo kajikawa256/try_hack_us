@@ -15,6 +15,7 @@ ul {
 }
 
 .HeaderMenu h1{
+    font-family: 'Playfair Display', serif;
     padding-left: 10px;
     text-align: left;
     text-decoration: none;
