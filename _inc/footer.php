@@ -11,7 +11,6 @@
   <p>何か用ですか？</p> -->
 </footer>
 
-<script src="../scripts/question1.js"></script>
 
 </body>
 </html>

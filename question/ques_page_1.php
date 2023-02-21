@@ -68,12 +68,10 @@ if (isset($flag)) {
 ?>
 
 <link rel="stylesheet" href="../css/question_page.css">
-<link rel="stylesheet" href="../css/font.css">
-
 <div class="contents">
         <!-- コンテンツ部分 -->
         <h2>認証を突破してください。（Lv1）</h2>
-        <p id="timer">残り<span id="Min">10</span>分<span id="Sec">00</span>秒</p>
+        <p id="timer">残り<span id="Min"></span>分<span id="Sec"></span>秒</p>
 
         <form action="./ques_page_1.php" method="POST">
                 <p id="err_message"> <?php if ($err_msg2 != "") {
@@ -103,5 +101,5 @@ if (isset($flag)) {
         </form>
 </div>
 
-
+<script src="../scripts/question.js"></script>
 <?php include("../_inc/footer.php"); ?> <!-- フッター共通部分 -->
