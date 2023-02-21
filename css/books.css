@@ -1,0 +1,27 @@
+.img {
+    text-align: left;
+    margin-left:60px;
+    width: 110px;
+    border: 1.5px solid #5ab4bd;
+    padding: 10px;
+  }
+.imgex {
+    font-size:16px;
+    text-align: left;
+    margin-right:60px;
+    border: 1.5px solid #5ab4bd;
+    padding: 10px;
+  }
+.imgex p{font-size:19px;}
+
+  @media (min-width: 300px) {
+    #parent {
+      display: flex;
+    }
+    .img {
+      flex-grow: 0;
+    }
+    .imgex {
+      flex-grow: 1;
+    }
+  }
