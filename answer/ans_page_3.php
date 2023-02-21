@@ -4,44 +4,45 @@
 <?php
 if ($_SESSION["judge"]) {
         header("Location: ../question/ques_page_" .  $_SESSION["level"] . ".php");
-}
+}else{
 
-// データベースの接続情報が書かれたファイルを読み込み
-require_once "../db/def.php";
-// dbのlevelカラムを更新する
-try {
-        $dbConnection = new dbConnection();
-        $db = $dbConnection->connection();
+        // データベースの接続情報が書かれたファイルを読み込み
+        require_once "../db/def.php";
+        // dbのlevelカラムを更新する
+        try {
+                $dbConnection = new dbConnection();
+                $db = $dbConnection->connection();
 
-        // SQL文を設定
-        $sql = "UPDATE users
-                set level = 4
-                where id = :id";
+                // SQL文を設定
+                $sql = "UPDATE users
+                        set level = 4
+                        where id = :id";
 
-        // stmtにsql文をセット
-        $stmt = $db->prepare($sql);;
+                // stmtにsql文をセット
+                $stmt = $db->prepare($sql);;
 
-        // バインドパラムし値を設定
-        $stmt->bindParam(':id', $_SESSION["id"], PDO::PARAM_STR);
+                // バインドパラムし値を設定
+                $stmt->bindParam(':id', $_SESSION["id"], PDO::PARAM_STR);
 
-        // トランザクション開始
-        $db->beginTransaction();
+                // トランザクション開始
+                $db->beginTransaction();
 
-        // 実行
-        $stmt->execute();
+                // 実行
+                $stmt->execute();
 
-        // コミット
-        $db->commit();
+                // コミット
+                $db->commit();
 
-        $_SESSION["judge"] = true;
-        $_SESSION["level"] = 4;
-} catch (PDOException $e) {
-        echo $e;
-} catch (Exception $e) {
-        echo $e;
-} finally {
-        $db = null;
-        $stmt = null;
+                $_SESSION["judge"] = true;
+                $_SESSION["level"] = 4;
+        } catch (PDOException $e) {
+                echo $e;
+        } catch (Exception $e) {
+                echo $e;
+        } finally {
+                $db = null;
+                $stmt = null;
+        }
 }
 $_POST["button"] = "";
 ?>
