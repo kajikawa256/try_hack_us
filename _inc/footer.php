@@ -11,7 +11,7 @@
   <p>何か用ですか？</p> -->
 </footer>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="./js/init.js"></script>
+<script src="../scripts/question1.js"></script>
+
 </body>
 </html>
