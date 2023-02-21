@@ -206,10 +206,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <div class="login-page">
     <div class="form">
       <form class="login-form" action="./sign_up.php" method="POST">
-        <input type="text" name="username" placeholder="ユーザネーム" value="<?= !$result['status'] ? $user : "" ?>" />
-        <input type="password" name="password" placeholder="パスワード" />
-        <input type="password" name="repeatPassword" placeholder="パスワード（確認）" />
-        <button>新規登録</button>
+        <input type="text" name="username" placeholder="username" value="<?= !$result['status'] ? $user : "" ?>" />
+        <input type="password" name="password" placeholder="password" />
+        <input type="password" name="repeatPassword" placeholder="repeat password" />
+        <button>REGISTER</button>
       </form>
       <p><?= $result["errMsg"] ?></p>
     </div>

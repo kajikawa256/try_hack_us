@@ -43,15 +43,5 @@ if(!isset($_SESSION["id"])){
             </div>
          </div>
       </header>
-
-
-
-
-
-
-
-
-
-
    </div>
 </body>
