@@ -17,7 +17,7 @@
                 <h1 class="top">ようこそ！<br><?= $_SESSION["name"] ?>さん</h1>
                 <!-- 問題に移動 -->
 
-                <button class="btn" onclick="location.href='../question/ques_page_1.php'">問題へ</button>
+                <button class="btn" onclick="location.href='../question/index.php'">問題へ</button>
 
                 <div class="tabs">
                         <input id="all" type="radio" name="tab_item" checked>
