@@ -106,5 +106,5 @@ if (!empty($_POST)) {
     </div>
   </div>
 
-
+  <script src="../scripts/register.js"></script>
   <?php include("../_inc/footer.php"); ?> <!-- フッター共通部分 -->

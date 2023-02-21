@@ -2,16 +2,15 @@
 const Min = document.querySelector("#Min");
 const Sec = document.querySelector("#Sec");
 
-var starts = sessionStorage.getItem('start');
+var starts = window.localStorage.getItem('start');
 
-if(starts === undefined){
+if(starts == null){
   //定義されていなければ
   var start = new Date();
-  sessionStorage.setItem('start',start);
+  window.localStorage.setItem('start',start);
 }else{
   //存在すれば
-  var start = sessionStorage.getItem('start');
-  start = new Date(start);
+  var start = new Date(starts);
 }
 
 let count = 0;
@@ -26,11 +25,16 @@ setInterval(() => {
   const remainTime = target - now ; //差分を取る（ミリ秒で返ってくる
 
   //差分の日・時・分・秒を取得
-  const difMin  = Math.floor(remainTime / 1000 / 60) % 60
+  var difMin  = Math.floor(remainTime / 1000 / 60) % 60
   var difSec  = Math.floor(remainTime / 1000) % 60
 
   if(difSec == 0){
-    difSec = 0;
+    difSec = -60;
+  }
+
+  if(difMin < -10){
+    difMin = -10;
+    difSec = -60;
   }
 
   Min.innerHTML = minutue + difMin;

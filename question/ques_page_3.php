@@ -30,9 +30,9 @@ $err_msg = "";
 if (isset($flag2)) {
         //buttonが押された後
         if ($id == "master" && $pass == "finalquestion") {
-                $err_msg = "ノリいいね！ヒント教えてあげる 【ディレクトリトラバーサル攻撃】";
+                $err_msg = "ノリいいね！ヒントは【ディレクトリトラバーサル攻撃】";
         } else if ($id == "' or 1 = 1 -- " || $pass == "' or 1 = 1 -- ") {
-                $err_msg = "部長！脆弱性直しときました！";
+                $err_msg = "部長！脆弱性直しときました！ヒントは【シャドウパスワード】";
         } else if (!$id == "" || !$pass == "") {
                 //idとpassが入力されていた場合
                 //db接続処理
@@ -86,7 +86,7 @@ $stmt = null;
 <div class="contents">
         <!-- コンテンツ部分 -->
         <h2>認証を突破してください。（Lv3）</h2>
-        <p id="timer">残り<span id="Min">10</span>分<span id="Sec">00</span>秒</p>
+        <p id="timer">残り<span id="Min"></span>分<span id="Sec"></span>秒</p>
 
         <form action="./login.php?page=ques_page_3.php" method="POST">
 
@@ -111,4 +111,5 @@ $stmt = null;
         </form>
 </div>
 
+<script src="../scripts/question.js"></script>
 <?php include("../_inc/footer.php"); ?> <!-- フッター共通部分 -->

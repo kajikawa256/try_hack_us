@@ -23,7 +23,7 @@ $err_msg2 = "";
 if (isset($flag)) {
         //buttonが押された後
         if ($id == "iceman" && $pass == "Albert1981") {
-                $err_msg = "そんなわけないよね";
+                $err_msg = "さすがにね.. ヒントは【SQLインジェクション】";
         } else if (!$id == "" || !$pass == "") {
                 //idとpassが入力されていた場合
                 //db接続処理
@@ -75,7 +75,7 @@ $stmt = null;
 <div class="contents">
         <!-- コンテンツ部分 -->
         <h2>認証を突破してください。（Lv2）</h2>
-        <p id="timer">残り<span id="Min">10</span>分<span id="Sec">00</span>秒</p>
+        <p id="timer">残り<span id="Min"></span>分<span id="Sec"></span>秒</p>
 
         <form action="./ques_page_2.php" method="POST">
 
@@ -106,4 +106,5 @@ $stmt = null;
         </form>
 </div>
 
+<script src="../scripts/question.js"></script>
 <?php include("../_inc/footer.php"); ?> <!-- フッター共通部分 -->
