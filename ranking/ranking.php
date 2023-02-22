@@ -8,7 +8,9 @@
 require_once "../db/def.php";
 
 //変数宣言
-$ranking = 0;
+$rank = 1;
+$log = 0;
+$keepRank = $rank;
 
 try {
   // DB接続をインスタンス化
@@ -18,7 +20,7 @@ try {
   // SQL文を作成
   $sql = "SELECT username,level,score
         FROM users
-        ORDER BY score DESC
+        ORDER BY score DESC, id ASC
         LIMIT 30";
 
   // stmtにsql文をセット
@@ -46,28 +48,34 @@ try {
 <div class="content">
 
   <div class="box11">
-  <h2>ランキングページ</h2>
-        <table class="table table-hover mt-5 form-control-lg">
-            <thead class="table-light text-secondary">
-              <tr>
-                <th>順位</th>
-                <th>ユーザネーム</th>
-                <th>レベル</th>
-                <th>スコア</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php $log = 0;$flag = false;?>
-              <?php foreach($result as $recode => $culum):$count=0?>
-                <tr id="table_contents">
-                <td><?= ++$ranking; ?></td>
-                  <?php foreach($culum as $data): ?>
-                    <td> <?= $data == 4 ? "完全クリア":$data; ?> </td>
-                  <?php endforeach ?>
-                </tr>
-              <?php endforeach ?>
-            </tbody>
-        </table>
+    <h2>ランキングページ</h2>
+    <table class="table table-hover mt-5 form-control-lg">
+      <thead class="table-light text-secondary">
+        <tr>
+          <th>順位</th>
+          <th>ユーザネーム</th>
+          <th>レベル</th>
+          <th>スコア</th>
+        </tr>
+      </thead>
+      <tbody>
 
-</div>
-<!-- ▲content▲ -->
+        <?php foreach ($result as $recode => $culum) : ?>
+          <tr id="table_contents">
+            <td><?= $log == $culum["SCORE"] ? $keepRank : $rank; ?></td>
+            <?php foreach ($culum as $data) : ?>
+              <td> <?= $data == 4 ? "完全クリア" : $data; ?> </td>
+            <?php endforeach ?>
+          </tr>
+          <?php
+          if ($log != $culum["SCORE"]) {
+            $keepRank = $rank;
+          };
+          $log = $culum["SCORE"];
+          ++$rank; ?>
+        <?php endforeach ?>
+      </tbody>
+    </table>
+
+  </div>
+  <!-- ▲content▲ -->
