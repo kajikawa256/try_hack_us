@@ -1,4 +1,6 @@
 <?php
+include("../_inc/header_login.php");  //ヘッダー共通部分
+
 // データベースの接続情報が書かれているファイルを読み込み
 require_once "../db/def.php";
 
