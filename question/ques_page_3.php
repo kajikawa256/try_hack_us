@@ -17,12 +17,12 @@ if ($flag != "ques_page_3.php") {
         header("Location: ./login.php?page=ques_page_3.php");
 }
 
-
 //変数宣言
 $id = filter_input(INPUT_POST, "id");
 $pass = filter_input(INPUT_POST, "password");
 $result = false;
 $flag2 = filter_input(INPUT_POST, "button");
+$hidden = filter_input(INPUT_POST,"hidden");
 
 $err_msg = "";
 
@@ -61,6 +61,7 @@ if (isset($flag2)) {
                 if ($result) {
                         //ユーザが存在するなら
                         $_SESSION["judge"] = false;
+                        $_SESSION["hidden"] = $hidden;
                         header("Location: ../answer/ans_page_3.php");
                         exit();
                 } else {
@@ -107,6 +108,7 @@ $stmt = null;
 
                 <div class="contents_elemnt" id="rogin_button">
                         <input type="submit" name="button" value="ログイン">
+                        <input type="hidden" name="hidden" value="" id="js"/>
                 </div>
         </form>
 </div>

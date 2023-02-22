@@ -3,17 +3,20 @@
 <?php include("../_inc/header.php"); ?> <!-- ヘッダー共通部分 -->
 <?php
 
+// データベースの接続情報が書かれているファイルを読み込み
+require_once "../db/def.php";
+
 // $_SESSION[level]が2未満だった場合問題レベル1にとばす
 if ($_SESSION["level"] != 2) {
         header("Location: ../question/ques_page_" .  $_SESSION["level"] . ".php");
 }
 
-require_once "../db/def.php";
 
 //変数宣言
 $id = filter_input(INPUT_POST, "id");
 $pass = filter_input(INPUT_POST, "password");
 $flag = filter_input(INPUT_POST, "button");
+$hidden = filter_input(INPUT_POST,"hidden");
 $result = false;
 
 $err_msg = "";
@@ -48,6 +51,7 @@ if (isset($flag)) {
                 if ($result) {
                         //ユーザが存在するなら
                         $_SESSION["judge"] = false;
+                        $_SESSION["hidden"] = $hidden;
                         header("Location: ../answer/ans_page_2.php");
                         exit();
                 } else {
@@ -99,9 +103,8 @@ $stmt = null;
                 </div>
 
                 <div class="contents_elemnt" id="rogin_button">
-                        <form action="../answer//ans_page_2.php" method="POST">
-                                <input type="submit" name="button" value="ログイン">
-                        </form>
+                        <input type="submit" name="button" value="ログイン">
+                        <input type="hidden" name="hidden" value="" id="js"/>
                 </div>
         </form>
 </div>
