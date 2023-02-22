@@ -2,13 +2,12 @@
     background: red;
 }
 .top{
+    margin-top: 30px;
+    margin-bottom: 30px;
     text-align:center;
 }
-/*ランキング*/
-.ranking{
-    text-align: right;
-    font-size: 20px;
-}
+
+
 /*問題へボタン*/
 .btn{
     width: 128px;
@@ -18,21 +17,71 @@
     border: none;
     background-color: #5ab4bd;
     color: white;
-    margin-bottom: 10px;
+    margin: 25px;
+    border-radius: 10px;
 }
 .text{
-    text-align: center;
+    margin-left:100px;
+    margin-top: 80px;
+    margin-bottom: 50px;
+    text-align: left;
     font-size: 19px;
+    width: 800px;
+    padding: 10px;
+    border: 3px solid #5ab4bd;
+    border-radius: 10px;
 }
+
+/* 001 */
+
+.button001{
+  margin-top: 50px;
+}
+.button001 a {
+  text-decoration: none;
+  background: #5bb7ae;
+  border-radius: 3px;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 280px;
+  padding: 10px 25px;
+  color: #FFF;
+  transition: 0.3s ease-in-out;
+  font-weight: 500;
+}
+.button001 a:hover {
+  background: #313131;
+  color: #FFF;
+}
+.button001 a:after {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-top: 3px solid #FFF;
+  border-right: 3px solid #FFF;
+  transform: rotate(45deg) translateY(-50%);
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  border-radius: 1px;
+  transition: 0.3s ease-in-out;
+}
+.button001 a:hover:after {
+  border-color: #FFF;
+}
+
 /*タブ*/
 .tabs {
-    margin-top: 50px;
-    padding-bottom: 40px;
+    margin-top: 40px;
+    padding-bottom: 30px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     width: 800px;
-    margin: 0 auto;}
-  
+    margin: 0 auto;
+  }
   /*タブのスタイル*/
   .tab_item {
     width: calc(100%/3);

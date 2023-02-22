@@ -47,10 +47,8 @@ try {
         <div id="sentence">
                 <p id="next_message">完全クリアおめでとうございます！</p>
         </div>
-        <div id="next_button">
-                <form action="../question/ques_page_3.php">
-                        <button><a href="../ranking/ranking.php" id="button_text">ランキングへ</a></button>
-                </form>
+        <div class="button001">
+                <a href="../ranking/ranking.php">ランキング画面へ</a>
         </div>
 </div>
 

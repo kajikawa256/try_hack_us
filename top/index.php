@@ -2,22 +2,12 @@
 <?php $description = "トップページの説明";?> <!-- headのdescriptionに反映させる -->
 <?php include("../_inc/header.php"); ?>  <!-- ヘッダー共通部分 -->
 <link rel="stylesheet" href="../css/top.css">
-<?php   
-        //フォームからusernameを取得
-        //$name = filter_input(INPUT_GET,"username");
- ?>
+
        <div class="contents">
                 <!-- コンテンツ部分 -->
                 <h2 class="tops">あなたのセキュリティは本当に安全ですか？</h2>
-                <div class="ranking">
-                <p>ランキング</p>
-                <p>1位<br>@@@</p>
-                </div>
 
                 <h1 class="top">ようこそ！<br><?= $_SESSION["name"] ?>さん</h1>
-                <!-- 問題に移動 -->
-
-                <button class="btn" onclick="location.href='../question/index.php'">問題へ</button>
 
                 <div class="tabs">
                         <input id="all" type="radio" name="tab_item" checked>
@@ -63,13 +53,13 @@
                 </div>
 
                 <p class="text">
-                特殊文字を適切に処理できていないと、スクリプトを実行できてしまったり、意図しない動作が行わ
-                <br>れる可能性があります。例を挙げるとSQLインジェクションやXXSなどです。これらの脆弱性は実
-                <br>際に体験してみないと理解をすることが難しいと考えました。脆弱性を実際に攻撃できる謎解き
-                <br>サイトです。ただ単にコピペで入力して処理を実行するだけでは面白みがないのでCTFで使われ
-                <br>ているflagのようなものを用意することで脆弱性の学習と同時に謎解きも楽しめるというサイト
-                <br>です。
+                今まで学習してきたエスケープ処理やPOST通信を行う理由を理解していない人が多くいると思いました。特殊文字を適切に処理できていないと、スクリプトを実行できてしまったり、意図しない処理が動作する可能性があります。例を挙げるとSQLインジェクションやディレクトリトラバーサルなどです。これらの脆弱性は実際に体験してみないと理解することが難しいと考えました。
+そこで脆弱性を実際に攻撃できる腕試しサイトを作ることにしました。このサイトではパスワード認証を実際に攻撃して不正ログインするというハッキング体験ができます。
                 </p>
-                
+                <!-- 問題に移動 -->
+
+                <div class="button001">
+                        <a href="../question/index.php">問題へ</a>
+                </div>
         </div>
 <?php include("../_inc/footer.php"); ?> <!-- フッター共通部分 -->
