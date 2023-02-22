@@ -16,7 +16,7 @@ try_hack_us
 # Usage
 
 インターネット上に公開しているのでここからアクセスしてください。
-URL：
+URL：https://click.ecc.ac.jp/ecc/spic22_hack02/register/sign_in.php
 
 # Note
 
