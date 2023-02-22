@@ -1,19 +1,34 @@
 .img {
-    text-align: left;
-    margin-left:60px;
+    margin-left:40px;
     width: 110px;
     border: 1.5px solid #5ab4bd;
-    padding: 10px;
+    padding: 5px;
   }
 .imgex {
     font-size:16px;
     text-align: left;
-    margin-right:60px;
+    margin-right:40px;
+    width: 700px;
     border: 1.5px solid #5ab4bd;
     padding: 10px;
   }
-.imgex p{font-size:19px;}
-
+.imgex p{
+  font-size:19px;
+  
+  }
+  .button a {
+    margin: auto;
+    font-size: 20px;
+    text-decoration: none;
+    background: #5ab4bd;
+    border-radius: 10px;
+    align-items: center;
+    padding: 5px;
+    color: #fff;
+  }
+  .button a:hover{
+    background-color: #5b9fae;
+  }
   @media (min-width: 300px) {
     #parent {
       display: flex;
