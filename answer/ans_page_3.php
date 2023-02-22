@@ -1,4 +1,4 @@
-<?php $title = "問題レベル3　突破!"; ?> <!-- headのtitleに反映させる -->
+<?php $title = "問題レベル3突破!"; ?> <!-- headのtitleに反映させる -->
 <?php $description = "congratulation"; ?> <!-- headのdescriptionに反映させる -->
 <?php include("../_inc/header.php"); ?> <!-- ヘッダー共通部分 -->
 <?php
@@ -33,8 +33,51 @@ if ($_SESSION["judge"]) {
                 // コミット
                 $db->commit();
 
+                //スコア処理
+                // SQL文を設定
+                $sql = "UPDATE users
+                set score = score + 5000
+                where id = :id";
+
+                // stmtにsql文をセット
+                $stmt = $db->prepare($sql);
+
+                // バインドパラムし値を設定
+                $stmt->bindParam(':id', $_SESSION["id"], PDO::PARAM_STR);
+
+                // トランザクション開始
+                $db->beginTransaction();
+
+                // 実行
+                $stmt->execute();
+
+                // コミット
+                $db->commit();
+
+                //スコア加算処理
+                // SQL文を設定
+                $sql = "UPDATE users
+                set score = score + 100 * {$_SESSION["hidden"]}
+                where id = :id";
+
+                // stmtにsql文をセット
+                $stmt = $db->prepare($sql);
+
+                // バインドパラムし値を設定
+                $stmt->bindParam(':id', $_SESSION["id"], PDO::PARAM_STR);
+
+                // トランザクション開始
+                $db->beginTransaction();
+
+                // 実行
+                $stmt->execute();
+
+                // コミット
+                $db->commit();
+
                 $_SESSION["judge"] = true;
                 $_SESSION["level"] = 4;
+                $_SESSION["hidden"] = 0;
         } catch (PDOException $e) {
                 echo $e;
         } catch (Exception $e) {
@@ -58,9 +101,7 @@ $_POST["button"] = "";
                 <p id="next_message">これであなたもアノニマスの一員です！<br>外部からのパラメータでウェブサーバ内のファイル名を直接指定する実装を避けましょう。</p>
         </div>
         <div id="next_button">
-                <form action="../question/ques_page_3.php">
-                        <button><a href="../question/ques_page_4.php" id="button_text">次へ</a></button>
-                </form>
+                <button><a href="../question/ques_page_4.php" id="button_text">次へ</a></button>
         </div>
 </div>
 

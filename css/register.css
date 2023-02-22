@@ -9,6 +9,10 @@
   margin-bottom: 10px;
 }
 
+#link_msg a{
+  color: #FFFFFF;
+}
+
 .login-page {
   width: 360px;
   padding: 8% 0 0;
@@ -18,7 +22,7 @@
 .form {
   position: relative;
   z-index: 1;
-  background: #FFFFFF;
+  /* background:#000000; */
   max-width: 360px;
   margin: 0 auto 100px;
   padding: 45px;
@@ -27,7 +31,7 @@
 }
 
 .form input {
-  font-family: "Roboto", sans-serif;
+  /* font-family: "Roboto", sans-serif; */
   outline: 0;
   background: #f2f2f2;
   width: 100%;
@@ -39,10 +43,10 @@
 }
 
 .form button {
-  font-family: "Roboto", sans-serif;
+  /* font-family: "Roboto", sans-serif; */
   text-transform: uppercase;
   outline: 0;
-  background: #4CAF50;
+  background:#008080;
   width: 100%;
   border: 0;
   padding: 15px;
@@ -56,7 +60,11 @@
 .form button:hover,
 .form button:active,
 .form button:focus {
-  background: #43A047;
+  /* background: #FFFFFF;
+  color: #008080; */
+  cursor: pointer;
+  transition: .2s cubic-bezier(0.55, 1, 0.55, 1);
+  letter-spacing: 0.2em;
 }
 
 .form .message {
@@ -121,11 +129,15 @@
 }
 
 body {
-
-  background: #76b852; /* fallback for old browsers */
+  /* background: #76b852; fallback for old browsers
   background: rgb(141,194,111);
   background: linear-gradient(90deg, rgba(141,194,111,1) 0%, rgba(118,184,82,1) 50%);
-  /* font-family: "Roboto", sans-serif; */
+  font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  */
+  background-image: url(../img/ques_page_background.jpg);
+  /* background-repeat: no-repeat; */
+  background-position-x: center;
+  background-size: 1500px;
 }

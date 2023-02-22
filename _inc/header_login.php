@@ -1,16 +1,3 @@
-<?php
-
-// セッションを使うことを宣言
-
-session_start();
-
-// ログイン状態出ない場合sign_in.phpページにリダイレクト
-if(!isset($_SESSION["id"])){
-   header("Location: ../register/sign_in.php");
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -30,18 +17,11 @@ if(!isset($_SESSION["id"])){
 <body>
    <div class="wrapper">
       <header>
-         <!-- ヘッダー部分 -->
-         <div class = "HeaderStart">
+        <div class = "HeaderStart">
             <div class = "HeaderMenu">
-               <h1><a href = "../top/index.php" title = "ホームページへ">Try Hack Us!</a></h1>
-               <ul>
-                  <li><a href = "../question/index.php" title = "クイズ">クイズ</a></li>
-                  <li><a href = "../ranking/ranking.php" title = "ランキング">ランキング</a></li>
-                  <li><a href = "" title = "参考書">参考書</a></li>
-                  <li><a href = "../register/sign_in.php" title = "ログアウト">ログアウト</a></li>
-               </ul>
+                <h1>Try Hack Us!</h1>
             </div>
-         </div>
+        </div>
       </header>
    </div>
 </body>

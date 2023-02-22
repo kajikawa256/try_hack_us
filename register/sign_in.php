@@ -1,4 +1,6 @@
 <?php
+include("../_inc/header_login.php");  //ヘッダー共通部分
+
 // データベースの接続情報が書かれているファイルを読み込み
 require_once "../db/def.php";
 
@@ -97,7 +99,7 @@ if (!empty($_POST)) {
       <form action="../register/sign_in.php" method="POST">
         <input type="text" name="username" placeholder="username" />
         <input type="password" name="password" placeholder="password" />
-        <button>ログイン</button>
+        <button>LOGIN</button>
         <div id="link_msg">
           <a id="link" href="./sign_up.php">アカウントを持っていない方はこちら</a>
         </div>
@@ -106,5 +108,5 @@ if (!empty($_POST)) {
     </div>
   </div>
 
-
+  <script src="../scripts/register.js"></script>
   <?php include("../_inc/footer.php"); ?> <!-- フッター共通部分 -->
