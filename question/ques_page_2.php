@@ -3,17 +3,20 @@
 <?php include("../_inc/header.php"); ?> <!-- ヘッダー共通部分 -->
 <?php
 
+// データベースの接続情報が書かれているファイルを読み込み
+require_once "../db/def.php";
+
 // $_SESSION[level]が2未満だった場合問題レベル1にとばす
 if ($_SESSION["level"] != 2) {
         header("Location: ../question/ques_page_" .  $_SESSION["level"] . ".php");
 }
 
-require_once "../db/def.php";
 
 //変数宣言
 $id = filter_input(INPUT_POST, "id");
 $pass = filter_input(INPUT_POST, "password");
 $flag = filter_input(INPUT_POST, "button");
+$hidden = filter_input(INPUT_POST,"hidden");
 $result = false;
 
 $err_msg = "";
@@ -23,7 +26,7 @@ $err_msg2 = "";
 if (isset($flag)) {
         //buttonが押された後
         if ($id == "iceman" && $pass == "Albert1981") {
-                $err_msg = "そんなわけないよね";
+                $err_msg = "さすがにね.. ヒントは【SQLインジェクション】";
         } else if (!$id == "" || !$pass == "") {
                 //idとpassが入力されていた場合
                 //db接続処理
@@ -48,6 +51,7 @@ if (isset($flag)) {
                 if ($result) {
                         //ユーザが存在するなら
                         $_SESSION["judge"] = false;
+                        $_SESSION["hidden"] = $hidden;
                         header("Location: ../answer/ans_page_2.php");
                         exit();
                 } else {
@@ -75,7 +79,7 @@ $stmt = null;
 <div class="contents">
         <!-- コンテンツ部分 -->
         <h2>認証を突破してください。（Lv2）</h2>
-        <p id="timer">残り<span id="Min">10</span>分<span id="Sec">00</span>秒</p>
+        <p id="timer">残り<span id="Min"></span>分<span id="Sec"></span>秒</p>
 
         <form action="./ques_page_2.php" method="POST">
 
@@ -99,11 +103,11 @@ $stmt = null;
                 </div>
 
                 <div class="contents_elemnt" id="rogin_button">
-                        <form action="../answer//ans_page_2.php" method="POST">
-                                <input type="submit" name="button" value="ログイン">
-                        </form>
+                        <input type="submit" name="button" value="ログイン">
+                        <input type="hidden" name="hidden" value="" id="js"/>
                 </div>
         </form>
 </div>
 
+<script src="../scripts/question.js"></script>
 <?php include("../_inc/footer.php"); ?> <!-- フッター共通部分 -->

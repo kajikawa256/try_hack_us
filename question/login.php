@@ -7,6 +7,12 @@
     case "home":
     case "index" :$page = "../top/index.php"; break;
     case "ranking" :$page = "../ranking/ranking.php"; break;
+    case "etc/shadow";
+    case "etc/passwd";
+    case "/etc/shadow";
+    case "/etc/passwd";
+    case "../etc/shadow";
+    case "../etc/passwd";
     case "/etc/master.passwd":
     case "/etc/security/passwd":
     case "/etc/tcb/aa/user/":

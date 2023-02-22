@@ -1,4 +1,4 @@
-<?php $title = "問題レベル1　突破!"; ?> <!-- headのtitleに反映させる -->
+<?php $title = "問題レベル1突破!"; ?> <!-- headのtitleに反映させる -->
 <?php $description = "congratulation"; ?> <!-- headのdescriptionに反映させる -->
 <?php include("../_inc/header.php"); ?> <!-- ヘッダー共通部分 -->
 <?php
@@ -56,8 +56,31 @@ if ($_SESSION["judge"]) {
                 // コミット
                 $db->commit();
 
+                 //スコア加算処理
+                // SQL文を設定
+                $sql = "UPDATE users
+                set score = score + 100 * {$_SESSION["hidden"]}
+                where id = :id";
+
+                // stmtにsql文をセット
+                $stmt = $db->prepare($sql);
+
+                // バインドパラムし値を設定
+                $stmt->bindParam(':id', $_SESSION["id"], PDO::PARAM_STR);
+
+                // トランザクション開始
+                $db->beginTransaction();
+
+                // 実行
+                $stmt->execute();
+
+                // コミット
+                $db->commit();
+
+                //セッション変数更新
                 $_SESSION["judge"] = true;
                 $_SESSION["level"] = 2;
+                $_SESSION["hidden"] = 0;
         } catch (PDOException $e) {
                 echo $e;
         } catch (Exception $e) {
@@ -88,5 +111,5 @@ $_POST["button"] = "";
         </div>
 </div>
 
-
+<script src="../scripts/answer.js"></script>
 <?php include("../_inc/footer.php"); ?> <!-- フッター共通部分 -->
