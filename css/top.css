@@ -7,6 +7,12 @@
     text-align:center;
 }
 
+.contents{
+  width: 1000px;
+  background-color: rgba(253, 251, 251, 0.934);
+  padding-bottom: 50px;
+}
+
 
 /*問題へボタン*/
 .btn{
