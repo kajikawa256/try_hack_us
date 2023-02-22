@@ -35,7 +35,6 @@ try {
 ?>
 
 <link rel="stylesheet" href="../css/question_page.css">
-<link rel="stylesheet" href="../css/font.css">
 <div class="contents">
         <!-- コンテンツ部分 -->
         <h2>Try Hack Us ページへようこそ</h2>
