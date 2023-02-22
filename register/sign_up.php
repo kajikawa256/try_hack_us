@@ -197,6 +197,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <meta name="description" content="新規登録"> <!-- 各ページのdescriptionを反映させる -->
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/register.css">
+  <link rel="stylesheet" href="../css/header.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Babylonica&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
