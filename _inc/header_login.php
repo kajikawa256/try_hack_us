@@ -1,4 +1,3 @@
-
 <body>
    <div class="wrapper">
       <header>
@@ -9,4 +8,3 @@
         </div>
       </header>
    </div>
-</body>

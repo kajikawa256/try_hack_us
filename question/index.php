@@ -35,12 +35,10 @@ try {
 ?>
 
 <link rel="stylesheet" href="../css/question_page.css">
-<link rel="stylesheet" href="../css/font.css">
-
 <div class="contents">
         <!-- コンテンツ部分 -->
         <h2>Try Hack Us ページへようこそ</h2>
-        <h3><?= "{$_SESSION['name']}さんの現在のレベル：{$_SESSION['level']}"; ?></h3>
+        <h3><?= "{$_SESSION['name']}さんの現在のレベル："?><?=$_SESSION['level'] > 3 ? "完全クリア":$_SESSION['level']; ?></h3>
         <h3><?= "{$_SESSION['name']}さんの現在の得点：{$result['SCORE']}点"; ?></h3>
         <div class="box22">
           <div class="description" >
@@ -55,15 +53,12 @@ try {
                 レベルごとにタイム測定も行っており、残りタイムに応じて得点が加算されます。<br>
                 一度クリアした問題にはチャレンジできないのでご注意ください。<br>
                 どうしてもわからない場合は右クリックで「検証」をクリックするかF12を押してソースコードを確認してみましょう。
-
-
             </p>
           </div>
         </div>
         <div class="button001">
-        <a href="./ques_page_1.php"><?= $_SESSION["level"] != 1 ? "続きから":"問題へ" ?></a>
+          <a href="./ques_page_1.php"><?= $_SESSION["level"] != 1 ? "続きから":"問題へ" ?></a>
         </div>
-      </div>
     </div>
 
 <?php include("../_inc/footer.php"); ?> <!-- フッター共通部分 -->

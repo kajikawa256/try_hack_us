@@ -37,7 +37,7 @@ if(!isset($_SESSION["id"])){
                <ul>
                   <li><a href = "../question/index.php" title = "クイズ">クイズ</a></li>
                   <li><a href = "../ranking/ranking.php" title = "ランキング">ランキング</a></li>
-                  <li><a href = "" title = "参考書">参考書</a></li>
+                  <li><a href = "../books/index.php" title = "参考書">参考書</a></li>
                   <li><a href = "../register/sign_in.php" title = "ログアウト">ログアウト</a></li>
                </ul>
             </div>

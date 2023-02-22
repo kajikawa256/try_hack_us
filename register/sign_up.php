@@ -1,5 +1,7 @@
 <?php
- include("../_inc/header_login.php");  //ヘッダー共通部分
+
+//ヘッダー共通部分
+ include("../_inc/header_login.php");
 
 // データベースの接続情報が書かれているファイルを読み込み
 require_once "../db/def.php";
@@ -188,8 +190,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 ?>
-<html lang="ja">
 
+<html lang="ja">
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -201,11 +203,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Babylonica&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
-
   <div class="login-page">
     <div class="form">
       <form class="login-form" action="./sign_up.php" method="POST">

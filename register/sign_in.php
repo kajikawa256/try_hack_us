@@ -1,5 +1,7 @@
 <?php
-include("../_inc/header_login.php");  //ヘッダー共通部分
+
+//ヘッダー共通部分 
+ include("../_inc/header_login.php");  
 
 // データベースの接続情報が書かれているファイルを読み込み
 require_once "../db/def.php";
@@ -74,15 +76,13 @@ if (!empty($_POST)) {
     }
   }
 }
-
 ?>
 
 <html lang="ja">
-
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>サインアップ</title> <!-- 各ページのtitleを反映させる -->
+  <title>サインイン</title> <!-- 各ページのtitleを反映させる -->
   <meta name="description" content="新規登録"> <!-- 各ページのdescriptionを反映させる -->
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/register.css">
@@ -90,11 +90,9 @@ if (!empty($_POST)) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Babylonica&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
-
   <div class="login-page">
     <div class="form">
       <form action="../register/sign_in.php" method="POST">
